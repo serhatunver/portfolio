@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-
+import { usePathname } from 'next/navigation';
 import { useIsMobile } from '@/hooks/use-mobile';
 import {
   NavigationMenu,
@@ -13,7 +13,12 @@ import {
   navigationMenuTriggerStyle,
 } from '@/components/ui/navigation-menu';
 
-const NAV_ITEMS: { title: string; href: string }[] = [
+interface NavItem {
+  title: string;
+  href: string;
+}
+
+const NAV_ITEMS: NavItem[] = [
   { title: 'Home', href: '/' },
   { title: 'About', href: '/about' },
   { title: 'Blog', href: '/blog' },
@@ -23,16 +28,30 @@ const NAV_ITEMS: { title: string; href: string }[] = [
 export function NavMenu() {
   const isMobile = useIsMobile();
 
+  const pathname = usePathname();
+
+  const isActive = (navItem: NavItem) => {
+    if (navItem.href === '/') return pathname === '/';
+
+    return navItem.href === pathname || pathname.startsWith(`${navItem.href}/`);
+  };
+
   return (
     <NavigationMenu viewport={isMobile}>
-      <NavigationMenuList className="flex-wrap">
+      <NavigationMenuList className="space-x-5">
         {NAV_ITEMS.map((item) => (
           <NavigationMenuItem key={item.title}>
-            <NavigationMenuLink
-              asChild
-              className={navigationMenuTriggerStyle()}
-            >
-              <Link href={item.href}>{item.title}</Link>
+            <NavigationMenuLink asChild>
+              <Link
+                href={item.href}
+                className={`transition-colors font-medium ${
+                  isActive(item)
+                    ? 'text-foreground'
+                    : 'text-muted-foreground hover:text-foreground dark:text-muted-foreground dark:hover:text-foreground'
+                }`}
+              >
+                {item.title}
+              </Link>
             </NavigationMenuLink>
           </NavigationMenuItem>
         ))}
