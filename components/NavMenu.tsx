@@ -14,6 +14,7 @@ import {
 } from '@/components/ui/navigation-menu';
 
 const NAV_ITEMS: { title: string; href: string }[] = [
+  { title: 'Home', href: '/' },
   { title: 'About', href: '/about' },
   { title: 'Blog', href: '/blog' },
   { title: 'Projects', href: '/projects' },
