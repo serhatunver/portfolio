@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import { ThemeToggle } from '@/components/ThemeToggle';
+import { ThemeToggle } from '@/components/common/ThemeToggle';
 import { NavMenu } from '@/components/NavMenu';
 
 export function Header() {
