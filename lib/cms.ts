@@ -1,7 +1,13 @@
-import type { Project, Education, Experience } from '@/types/content';
+import type {
+  Project,
+  Education,
+  Experience,
+  TechStack,
+} from '@/types/content';
 import { projects } from '@/content/projects';
 import { education } from '@/content/education';
 import { experience } from '@/content/experience';
+import { techStack } from '@/content/tech-stack';
 
 const useCMS = process.env.USE_CMS === 'true';
 
@@ -22,4 +28,10 @@ export async function getExperience(): Promise<Experience[]> {
     // return fetchExperienceFromCMS();
   }
   return experience;
+}
+export async function getTechStack(): Promise<TechStack[]> {
+  if (useCMS) {
+    // return fetchTechStackFromCMS();
+  }
+  return techStack;
 }

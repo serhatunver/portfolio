@@ -30,3 +30,8 @@ export type Experience = {
   techStack: string[];
   companyLogo?: string;
 };
+
+export type TechStack = {
+  title: string;
+  technologies: string[];
+};
