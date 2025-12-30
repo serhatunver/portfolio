@@ -9,6 +9,7 @@ export type Project = {
 };
 
 export type Education = {
+  id: string;
   degree: string;
   department: string;
   institution: string;
@@ -20,6 +21,7 @@ export type Education = {
 };
 
 export type Experience = {
+  id: string;
   company: string;
   role: string;
   duration: string;
