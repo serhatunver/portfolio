@@ -1,4 +1,7 @@
-import { ExperienceCard } from '@/components/common/ExperienceCard';
+import { ExperienceSection } from '@/components/sections/ExperienceSection';
+import { EducationSection } from '@/components/sections/EducationSection';
+import { TechStackSection } from '@/components/sections/TechStackSection';
+import { ProjectsSection } from '@/components/sections/ProjectsSection';
 
 export default function About() {
   return (
@@ -9,7 +12,10 @@ export default function About() {
         building web applications. Below is a summary of my professional
         experience.
       </p>
-      <ExperienceCard />
+      <EducationSection />
+      <ExperienceSection />
+      <TechStackSection />
+      <ProjectsSection />
     </div>
   );
 }

@@ -1,8 +1,6 @@
-import Link from 'next/link';
-import { Button } from '@/components/ui/button';
-import { ProjectCard } from '@/components/common/ProjectCard';
-import { EducationCard } from '@/components/common/EducationCard';
-import { ArrowRight } from 'lucide-react';
+import { ExperienceSection } from '@/components/sections/ExperienceSection';
+import { EducationSection } from '@/components/sections/EducationSection';
+import { ProjectsSection } from '@/components/sections/ProjectsSection';
 
 import { Section } from '@/components/layout/Section';
 
@@ -16,12 +14,9 @@ export default function Home() {
           applications.
         </p>
       </div>
-      <Section title="Education" seeAllLink="/education">
-        <EducationCard />
-      </Section>
-      <Section title="Projects" seeAllLink="/projects">
-        <ProjectCard />
-      </Section>
+      <ExperienceSection />
+      <EducationSection />
+      <ProjectsSection />
     </div>
   );
 }
