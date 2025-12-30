@@ -5,16 +5,23 @@ export function TechBadge({ tech }: { tech: string }) {
   const data = ICONS[tech];
   if (!data) return null;
 
-  const { Icon, hex } = data;
+  const { Icon, hex, darkInvert } = data;
 
   return (
     <Badge
       key={tech}
-      variant="secondary"
+      // variant="outline"
       className="flex items-center h-6 py-0 mr-2 mb-2 brightness-100 dark:brightness-120"
-      style={{ backgroundColor: `${hex}30` }}
+      style={{
+        backgroundColor: `${hex}30`,
+        // borderColor: `${darkInvert ? '#ffffff' : hex}80`,
+      }}
     >
-      <Icon color="default" size={12} />
+      <Icon
+        color="default"
+        className={darkInvert ? 'dark:invert' : ''}
+        size={12}
+      />
       <span className="ml-0.5 text-black dark:text-white">{tech}</span>
     </Badge>
   );

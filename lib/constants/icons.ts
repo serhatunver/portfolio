@@ -1,7 +1,10 @@
 import * as SimpleIcons from '@icons-pack/react-simple-icons';
 import type { IconType } from '@icons-pack/react-simple-icons';
 
-export const ICONS: Record<string, { Icon: IconType; hex: string }> = {
+export const ICONS: Record<
+  string,
+  { Icon: IconType; hex: string; darkInvert?: boolean }
+> = {
   React: { Icon: SimpleIcons.SiReact, hex: SimpleIcons.SiReactHex },
   NodeJS: { Icon: SimpleIcons.SiNodedotjs, hex: SimpleIcons.SiNodedotjsHex },
   TypeScript: {
@@ -14,7 +17,8 @@ export const ICONS: Record<string, { Icon: IconType; hex: string }> = {
   },
   Express: {
     Icon: SimpleIcons.SiExpress,
-    hex: '#ffffff',
+    hex: SimpleIcons.SiExpressHex,
+    darkInvert: true,
   },
   MongoDB: {
     Icon: SimpleIcons.SiMongodb,
@@ -30,7 +34,8 @@ export const ICONS: Record<string, { Icon: IconType; hex: string }> = {
   },
   'Next.js': {
     Icon: SimpleIcons.SiNextdotjs,
-    hex: '#ffffff',
+    hex: SimpleIcons.SiNextdotjsHex,
+    darkInvert: true,
   },
   'Tailwind CSS': {
     Icon: SimpleIcons.SiTailwindcss,
