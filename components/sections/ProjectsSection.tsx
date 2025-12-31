@@ -1,16 +1,23 @@
 import { Section } from '@/components/layout/Section';
-import { ProjectCard } from '@/components/common/ProjectCard';
+import { ProjectList } from '@/components/common/ProjectList';
 import { getProjects } from '@/lib/cms';
 
-export async function ProjectsSection() {
-  const projects = await getProjects();
+type ProjectsSectionProps = {
+  limit?: number;
+  seeAllLink?: string;
+};
 
+export async function ProjectsSection({
+  limit,
+  seeAllLink,
+}: ProjectsSectionProps) {
   return (
-    <Section title="Projects" description="Here are some of my projects.">
-      {projects.map((project) => (
-        <ProjectCard key={project.id} project={project} />
-      ))}
-      <div></div>
+    <Section
+      title="Projects"
+      description="Here are some of my projects."
+      seeAllLink={seeAllLink}
+    >
+      <ProjectList limit={limit} />
     </Section>
   );
 }

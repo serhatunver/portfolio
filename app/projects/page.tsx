@@ -1,15 +1,16 @@
-import { ProjectsSection } from '@/components/sections/ProjectsSection';
+import { ProjectList } from '@/components/common/ProjectList';
+import { Section } from '@/components/layout/Section';
 
 export default function Projects() {
   return (
-    // <div className="flex w-full flex-col justify-center space-y-6 py-4">
-    //   <div>
-    //     <h1 className="text-2xl font-bold">Projects</h1>
-    //     <p className="mt-2 text-muted-foreground">
-    //       Here are some of my projects.
-    //     </p>
-    //   </div>
-    // </div>
-    <ProjectsSection />
+    <Section ariaLabel="Projects Section">
+      <div className="mb-8">
+        <h1 className="text-2xl font-bold">Projects</h1>
+        <p className="mt-2 text-muted-foreground">
+          Here are some of my projects.
+        </p>
+      </div>
+      <ProjectList />
+    </Section>
   );
 }
