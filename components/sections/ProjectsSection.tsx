@@ -11,13 +11,14 @@ export async function ProjectsSection({
   limit,
   seeAllLink,
 }: ProjectsSectionProps) {
+  const projects = await getProjects();
   return (
     <Section
       title="Projects"
       description="Here are some of my projects."
       seeAllLink={seeAllLink}
     >
-      <ProjectList limit={limit} />
+      <ProjectList projects={projects} limit={limit} />
     </Section>
   );
 }

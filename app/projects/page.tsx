@@ -1,7 +1,10 @@
 import { ProjectList } from '@/components/common/ProjectList';
 import { Section } from '@/components/layout/Section';
+import { getProjects } from '@/lib/cms';
 
-export default function Projects() {
+export default async function Projects() {
+  const projects = await getProjects();
+
   return (
     <Section ariaLabel="Projects Section">
       <div className="mb-8">
@@ -10,7 +13,7 @@ export default function Projects() {
           Here are some of my projects.
         </p>
       </div>
-      <ProjectList />
+      <ProjectList projects={projects} />
     </Section>
   );
 }

@@ -1,15 +1,18 @@
 import { Section } from '@/components/layout/Section';
 import { ProjectCard } from '@/components/common/ProjectCard';
-import { getProjects } from '@/lib/cms';
+import type { Project } from '@/types/content';
 
 type ProjectsSectionProps = {
+  projects: Project[];
   limit?: number;
   seeAllLink?: string;
 };
 
-export async function ProjectList({ limit, seeAllLink }: ProjectsSectionProps) {
-  const projects = await getProjects();
-
+export async function ProjectList({
+  projects,
+  limit,
+  seeAllLink,
+}: ProjectsSectionProps) {
   const displayed = limit ? projects.slice(0, limit) : projects;
 
   return (
