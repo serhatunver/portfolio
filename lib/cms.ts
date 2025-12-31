@@ -3,11 +3,13 @@ import type {
   Education,
   Experience,
   TechStack,
+  HeroSection,
 } from '@/types/content';
 import { projects } from '@/content/projects';
 import { education } from '@/content/education';
 import { experience } from '@/content/experience';
 import { techStack } from '@/content/tech-stack';
+import { heroSection } from '@/content/hero-section';
 
 const useCMS = process.env.USE_CMS === 'true';
 
@@ -34,4 +36,10 @@ export async function getTechStack(): Promise<TechStack[]> {
     // return fetchTechStackFromCMS();
   }
   return techStack;
+}
+export async function getHeroSection(): Promise<HeroSection> {
+  if (useCMS) {
+    // return fetchHeroSectionFromCMS();
+  }
+  return heroSection;
 }

@@ -1,11 +1,12 @@
 export type Project = {
   id: string;
   title: string;
-  description: string;
+  description?: string;
   detailedDescription?: string;
   techStack: string[];
   githubLink?: string;
   demoLink?: string;
+  slug: string;
 };
 
 export type Education = {
@@ -34,4 +35,9 @@ export type Experience = {
 export type TechStack = {
   title: string;
   technologies: string[];
+};
+
+export type HeroSection = {
+  title: string;
+  description: string;
 };
