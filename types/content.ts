@@ -1,5 +1,5 @@
 export type Project = {
-  id: string;
+  _id: string;
   title: string;
   description?: string;
   detailedDescription?: string;
@@ -10,24 +10,28 @@ export type Project = {
 };
 
 export type Education = {
-  id: string;
+  _id: string;
   degree: string;
   department: string;
   institution: string;
-  duration: string;
+  startDate: string;
+  isCurrent: boolean;
+  endDate?: string | null;
   location: string;
-  details: string;
+  description: string;
   gpa: string;
   institutionLogo: string;
 };
 
 export type Experience = {
-  id: string;
+  _id: string;
   company: string;
   role: string;
-  duration: string;
+  startDate: string;
+  isCurrent: boolean;
+  endDate?: string | null;
   location: string;
-  responsibilities: string[];
+  highlights: string[];
   techStack: string[];
   companyLogo?: string;
 };
@@ -40,4 +44,23 @@ export type TechStack = {
 export type HeroSection = {
   title: string;
   description: string;
+};
+
+export type AboutSection = {
+  title: string;
+  content: string[];
+};
+
+type ContactType = 'github' | 'linkedin' | 'email';
+
+export type FooterLink = {
+  text: ContactType;
+  href: string;
+};
+
+export type Footer = {
+  name: string;
+  title: string;
+  message: string;
+  links: FooterLink[];
 };

@@ -5,13 +5,9 @@ import { getHeroSection } from '@/lib/cms';
 
 export async function HeroSection() {
   const heroSection = await getHeroSection();
+
   return (
     <Section ariaLabel="Hero Section" className="mt-6">
-      {/* <h1 className="text-2xl font-bold">Welcome to My Portfolio</h1>
-      <p className="mt-2 text-base text-muted-foreground">
-        Hi! I am Serhat Ünver, a software developer specializing in web
-        applications.
-      </p> */}
       <h1 className="text-2xl font-bold tracking-tight">{heroSection.title}</h1>
 
       <p className="mt-4 max-w-xl text-muted-foreground">

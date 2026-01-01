@@ -10,9 +10,11 @@ export async function ExperienceSection() {
       // description="Technologies I work with and focus on the most."
       // seeAllLink="/"
     >
-      {experienceList.map((experience) => (
-        <ExperienceCard key={experience.id} experience={experience} />
-      ))}
+      <div className="flex flex-col gap-3">
+        {experienceList.map((experience) => (
+          <ExperienceCard key={experience._id} experience={experience} />
+        ))}
+      </div>
     </Section>
   );
 }

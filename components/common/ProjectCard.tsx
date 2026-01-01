@@ -19,7 +19,7 @@ import type { Project } from '@/types/content';
 
 export function ProjectCard({ project }: { project: Project }) {
   return (
-    <Card className="w-full mb-2 bg-background">
+    <Card className="w-full rounded-2xl bg-background gap-4">
       <CardHeader>
         <CardTitle className="text-lg">{project.title}</CardTitle>
         <CardDescription>{project.description}</CardDescription>
@@ -30,28 +30,43 @@ export function ProjectCard({ project }: { project: Project }) {
             </CardAction> */}
       </CardHeader>
       <CardContent className="space-y-4">
-        <p>Detailed information about the project can be placed here</p>
-        <div className="flex flex-wrap">
+        <p>{project.detailedDescription}</p>
+        <div className="flex flex-wrap gap-2">
           {project.techStack.map((tech) => (
             <TechBadge key={tech} tech={tech} />
           ))}
         </div>
       </CardContent>
-      <CardFooter className="flex gap-1 justify-end">
+
+      <CardFooter className="flex justify-end gap-1">
+        {project.githubLink && (
+          <Button asChild variant="link" size="sm">
+            <Link
+              href={project.githubLink}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <SiGithub className="size-3" />
+              GitHub
+            </Link>
+          </Button>
+        )}
+
+        {project.demoLink && (
+          <Button asChild variant="link" size="sm">
+            <Link
+              href={project.demoLink}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <ExternalLink className="size-3" />
+              Demo
+            </Link>
+          </Button>
+        )}
+
         <Button asChild variant="link" size="sm">
-          <Link href="/" className="leading-none">
-            <SiGithub className="size-3" />
-            GitHub
-          </Link>
-        </Button>
-        <Button asChild variant="link" size="sm">
-          <Link href="/" className="leading-none">
-            <ExternalLink className="size-3" />
-            Demo
-          </Link>
-        </Button>
-        <Button asChild variant="link" size="sm">
-          <Link href="/" className="leading-none">
+          <Link href={`/projects/${project.slug}`}>
             <Info className="size-3" />
             Details
           </Link>

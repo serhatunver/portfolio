@@ -4,42 +4,63 @@ import type {
   Experience,
   TechStack,
   HeroSection,
+  AboutSection,
 } from '@/types/content';
+
 import { projects } from '@/content/projects';
 import { education } from '@/content/education';
 import { experience } from '@/content/experience';
 import { techStack } from '@/content/tech-stack';
 import { heroSection } from '@/content/hero-section';
+import { aboutSection } from '@/content/about-section';
+
+import {
+  fetchProjectsFromCMS,
+  fetchEducationFromCMS,
+  fetchExperienceFromCMS,
+  fetchTechStackFromCMS,
+  fetchHeroSectionFromCMS,
+  fetchAboutSectionFromCMS,
+} from './sanity.fetch';
 
 const useCMS = process.env.USE_CMS === 'true';
 
-export async function getProjects(): Promise<Project[]> {
-  if (useCMS) {
-    // return fetchProjectsFromCMS();
+async function withFallback<T>(
+  cmsFetcher: () => Promise<T>,
+  localData: T,
+): Promise<T> {
+  if (!useCMS) return localData;
+
+  try {
+    return await cmsFetcher();
+  } catch (error) {
+    console.error('[CMS FALLBACK]', error);
+    return localData;
   }
-  return projects;
 }
-export async function getEducation(): Promise<Education[]> {
-  if (useCMS) {
-    // return fetchEducationFromCMS();
-  }
-  return education;
+
+export function getProjects(): Promise<Project[]> {
+  return withFallback(fetchProjectsFromCMS, projects);
 }
-export async function getExperience(): Promise<Experience[]> {
-  if (useCMS) {
-    // return fetchExperienceFromCMS();
-  }
-  return experience;
+
+export function getEducation(): Promise<Education[]> {
+  return withFallback(fetchEducationFromCMS, education);
 }
-export async function getTechStack(): Promise<TechStack[]> {
-  if (useCMS) {
-    // return fetchTechStackFromCMS();
-  }
-  return techStack;
+
+export function getExperience(): Promise<Experience[]> {
+  return withFallback(fetchExperienceFromCMS, experience);
 }
+
+export function getTechStack(): Promise<TechStack[]> {
+  return withFallback(fetchTechStackFromCMS, techStack);
+}
+
 export async function getHeroSection(): Promise<HeroSection> {
-  if (useCMS) {
-    // return fetchHeroSectionFromCMS();
-  }
-  return heroSection;
+  const sections = await withFallback(fetchHeroSectionFromCMS, [heroSection]);
+  return sections[0];
+}
+
+export async function getAboutSection(): Promise<AboutSection> {
+  const sections = await withFallback(fetchAboutSectionFromCMS, [aboutSection]);
+  return sections[0];
 }

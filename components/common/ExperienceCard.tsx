@@ -1,4 +1,4 @@
-import { Experience } from '@/types/content';
+import type { Experience } from '@/types/content';
 import Link from 'next/link';
 import {
   Card,
@@ -11,13 +11,16 @@ import {
 } from '@/components/ui/card';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { TechBadge } from '@/components/common/TechBadge';
-import { CircleCheckBig, MapPin } from 'lucide-react';
+import { Badge } from '@/components/ui/badge';
+import { CircleCheckBig, MapPin, Calendar, Dot } from 'lucide-react';
+
+import { formatDuration } from '@/lib/utils/date';
 
 export function ExperienceCard({ experience }: { experience: Experience }) {
   return (
-    <Card className="w-full border-none shadow-none mb-4 bg-background/50 backdrop-blur-m px-0 py-4">
+    <Card className="w-full border-none shadow-none bg-background gap-4 py-4">
       <CardHeader className="flex items-center gap-4 px-0">
-        <Avatar className="size-12 self-start">
+        <Avatar className="size-12 self-start border-2">
           <AvatarImage src={experience.companyLogo} alt={experience.company} />
           <AvatarFallback>
             {experience.company
@@ -27,35 +30,44 @@ export function ExperienceCard({ experience }: { experience: Experience }) {
               .toUpperCase()}
           </AvatarFallback>
         </Avatar>
-        <div className="w-full space-y-2">
-          <CardTitle className="leading-none">
-            {experience.role} at {experience.company}
+        <div className="flex flex-col justify-between w-full space-y-2">
+          <CardTitle className="tracking-tight">
+            {experience.role} @{experience.company}
           </CardTitle>
-          <CardDescription>
-            <div className="space-y-0.5 text-xs">
-              <div>{experience.duration}</div>
-              <div className="flex items-center gap-2">
-                <MapPin size={12} />
-                {experience.location}
-              </div>
-            </div>
+          <CardDescription className="flex h-6 flex-wrap gap-3">
+            <Badge
+              variant="outline"
+              className="bg-muted"
+              // className="bg-[#00DC82]/10 border-[#00DC82]/50"
+            >
+              <MapPin size={12} />
+              {experience.location}
+            </Badge>
+            <Badge
+              variant="outline"
+              className="bg-muted"
+              // className="bg-[#00DC82]/10 border-[#00DC82]/50"
+            >
+              <Calendar size={12} />
+              {formatDuration(experience.startDate, experience.endDate)}
+            </Badge>
           </CardDescription>
         </div>
       </CardHeader>
       <CardContent className="text-sm px-0">
         <ul className="space-y-1">
-          {experience.responsibilities.map((item, idx) => (
+          {experience.highlights.map((item, idx) => (
             <li key={idx}>
               <CircleCheckBig
                 className="inline mr-2 mb-1 text-muted-foreground"
-                size={12}
+                size={14}
               />
               {item}
             </li>
           ))}
         </ul>
       </CardContent>
-      <CardFooter className="flex flex-wrap px-0">
+      <CardFooter className="flex flex-wrap px-0 gap-2">
         {experience.techStack.map((tech) => (
           <TechBadge key={tech} tech={tech} />
         ))}
