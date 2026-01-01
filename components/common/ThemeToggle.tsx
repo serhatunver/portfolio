@@ -22,7 +22,7 @@ export function ThemeToggle() {
   return (
     <Button
       variant="outline"
-      size="icon-sm"
+      size="icon"
       onClick={toggleTheme}
       aria-label="Toggle theme"
       className="relative p-0 overflow-hidden"

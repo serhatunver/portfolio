@@ -38,7 +38,7 @@ export function NavMenu() {
 
   return (
     <NavigationMenu viewport={isMobile}>
-      <NavigationMenuList className="space-x-0 md:space-x-4">
+      <NavigationMenuList className="gap-0 md:gap-4">
         {NAV_ITEMS.map((item) => (
           <NavigationMenuItem key={item.title}>
             <NavigationMenuLink asChild>
