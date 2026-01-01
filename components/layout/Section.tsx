@@ -1,12 +1,8 @@
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
-import {
-  ChevronsRight,
-  ChevronRight,
-  ExternalLink,
-  ArrowRight,
-} from 'lucide-react';
+import { ChevronsRight, ArrowRight } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import * as React from 'react';
 
 type SectionProps = {
   title?: string;
@@ -52,7 +48,7 @@ export function Section({
                   size="sm"
                   className="has-[>svg]:px-0 px-0"
                 >
-                  <Link href={seeAllLink} className="leading-0">
+                  <Link href={seeAllLink}>
                     See all
                     <ArrowRight className="size-4" />
                   </Link>
@@ -67,7 +63,19 @@ export function Section({
         </header>
       )}
 
-      <div>{children}</div>
+      {children}
     </section>
   );
 }
+
+type SectionContentProps = {
+  className?: string;
+  children: React.ReactNode;
+};
+
+Section.Content = function SectionContent({
+  className,
+  children,
+}: SectionContentProps) {
+  return <div className={className}>{children}</div>;
+};

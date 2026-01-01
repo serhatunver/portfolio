@@ -7,12 +7,14 @@ export async function AboutSection() {
   console.log(aboutSection);
   return (
     <Section>
-      <h1 className="text-2xl font-bold mb-4">{aboutSection.title}</h1>
-      {aboutSection.content.map((item) => (
-        <p key={item} className="mb-4 text-base text-muted-foreground">
-          {item}
-        </p>
-      ))}
+      <Section.Content className="space-y-4">
+        <h1 className="text-2xl font-bold">{aboutSection.title}</h1>
+        {aboutSection.content.map((item) => (
+          <p key={item} className="text-base text-muted-foreground">
+            {item}
+          </p>
+        ))}
+      </Section.Content>
     </Section>
   );
 }
