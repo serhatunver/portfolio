@@ -1,5 +1,4 @@
 import type { Experience } from '@/types/content';
-import Link from 'next/link';
 import {
   Card,
   CardAction,
@@ -12,7 +11,7 @@ import {
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { TechBadge } from '@/components/common/TechBadge';
 import { Badge } from '@/components/ui/badge';
-import { CircleCheckBig, MapPin, Calendar, Dot } from 'lucide-react';
+import { CircleCheckBig, MapPin, Calendar } from 'lucide-react';
 
 import { formatDuration } from '@/lib/utils/date';
 
@@ -34,20 +33,12 @@ export function ExperienceCard({ experience }: { experience: Experience }) {
           <CardTitle className="tracking-tight">
             {experience.role} @{experience.company}
           </CardTitle>
-          <CardDescription className="flex h-6 flex-wrap gap-3">
-            <Badge
-              variant="outline"
-              className="bg-muted"
-              // className="bg-[#00DC82]/10 border-[#00DC82]/50"
-            >
+          <CardDescription className="flex flex-wrap gap-2">
+            <Badge variant="outline" className="bg-muted">
               <MapPin size={12} />
               {experience.location}
             </Badge>
-            <Badge
-              variant="outline"
-              className="bg-muted"
-              // className="bg-[#00DC82]/10 border-[#00DC82]/50"
-            >
+            <Badge variant="outline" className="bg-muted">
               <Calendar size={12} />
               {formatDuration(experience.startDate, experience.endDate)}
             </Badge>
