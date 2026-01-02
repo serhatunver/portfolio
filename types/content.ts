@@ -1,3 +1,5 @@
+import type { PortableTextBlock } from 'next-sanity';
+
 export type Project = {
   _id: string;
   title: string;
@@ -34,6 +36,23 @@ export type Experience = {
   highlights: string[];
   techStack: string[];
   companyLogo?: string;
+};
+
+export type Category = {
+  title: string;
+  slug?: string;
+  description?: string;
+};
+
+export type BlogPost = {
+  _id: string;
+  title: string;
+  slug: string;
+  excerpt: string;
+  publishedAt: string;
+  tags: string[];
+  categories: Category[];
+  body: PortableTextBlock[];
 };
 
 export type TechStack = {
