@@ -46,8 +46,8 @@ export function BlogPostCard() {
               {post.techStack.map((tech) => (
                 <Badge
                   key={tech}
-                  variant="secondary"
-                  className="bg-blue-500 text-white dark:bg-blue-600 mr-2 mb-2"
+                  variant="outline"
+                  className="bg-purple-800 text-white mr-2 mb-2"
                 >
                   <CircleCheckBig />
                   {tech}

@@ -10,11 +10,11 @@ export function TechBadge({ tech }: { tech: string }) {
   return (
     <Badge
       key={tech}
-      // variant="outline"
-      className="flex items-center h-6 py-0 mr-2 mb-2 brightness-100 dark:brightness-120"
+      variant="outline"
+      className="flex items-center h-6 brightness-100 dark:brightness-120"
       style={{
-        backgroundColor: `${hex}30`,
-        // borderColor: `${darkInvert ? '#ffffff' : hex}80`,
+        backgroundColor: `${hex}15`,
+        borderColor: `${darkInvert ? '#666666' : hex}60`,
       }}
     >
       <Icon

@@ -1,15 +1,16 @@
 import { BlogPostCard } from '@/components/common/BlogPostCard';
+import { Section } from '@/components/layout/Section';
 
 export default function Blog() {
   return (
-    <div className="flex w-full flex-col justify-center space-y-6 py-4">
-      <div>
+    <>
+      <Section ariaLabel="Blog Section">
         <h1 className="text-2xl font-bold">Blog</h1>
         <p className="mt-2 text-muted-foreground">
           Welcome to my blog! Here are my latest posts.
         </p>
-      </div>
+      </Section>
       <BlogPostCard />
-    </div>
+    </>
   );
 }
