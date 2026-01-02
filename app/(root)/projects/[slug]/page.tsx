@@ -6,7 +6,7 @@ import { Section } from '@/components/layout/Section';
 import { TechBadge } from '@/components/common/TechBadge';
 import { Button } from '@/components/ui/button';
 
-import { ArrowLeft, ExternalLink } from 'lucide-react';
+import { ArrowLeft, ExternalLink, CircleCheckBig } from 'lucide-react';
 import { SiGithub } from '@icons-pack/react-simple-icons';
 
 type ProjectDetailsPageProps = {
@@ -48,8 +48,18 @@ export default async function ProjectDetailsPage({
       <Section title={project.title} description={project.description}>
         <div className="space-y-6">
           {/* Description */}
-          {project.detailedDescription && (
-            <p className="">{project.detailedDescription}</p>
+          {project.highlights && (
+            <ul className="space-y-1">
+              {project.highlights.map((highlight, idx) => (
+                <li key={idx}>
+                  <CircleCheckBig
+                    className="inline mr-2 mb-1 text-muted-foreground"
+                    size={14}
+                  />
+                  {highlight}
+                </li>
+              ))}
+            </ul>
           )}
 
           {/* Tech stack */}
