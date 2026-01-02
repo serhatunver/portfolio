@@ -2,7 +2,7 @@ export type Project = {
   _id: string;
   title: string;
   description?: string;
-  detailedDescription?: string;
+  highlights: string[];
   techStack: string[];
   githubLink?: string;
   demoLink?: string;
@@ -18,7 +18,7 @@ export type Education = {
   isCurrent: boolean;
   endDate?: string | null;
   location: string;
-  description: string;
+  highlights: string[];
   gpa: string;
   institutionLogo: string;
 };

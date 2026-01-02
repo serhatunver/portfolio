@@ -10,7 +10,7 @@ import {
 } from '@/components/ui/card';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Badge } from '@/components/ui/badge';
-import { MapPin, Calendar, GraduationCap } from 'lucide-react';
+import { MapPin, Calendar, GraduationCap, CircleCheckBig } from 'lucide-react';
 import { formatDuration } from '@/lib/utils/date';
 
 export function EducationCard({ education }: { education: Education }) {
@@ -51,8 +51,18 @@ export function EducationCard({ education }: { education: Education }) {
           <span>{education.location}</span>
         </Badge>
       </CardContent>
-      <CardFooter className="px-0">
-        <p className="text-sm">{education.description}</p>
+      <CardFooter className="text-sm px-0">
+        <ul className="space-y-1">
+          {education.highlights.map((highlight, idx) => (
+            <li key={idx}>
+              <CircleCheckBig
+                className="inline mr-2 mb-1 text-muted-foreground"
+                size={14}
+              />
+              {highlight}
+            </li>
+          ))}
+        </ul>
       </CardFooter>
     </Card>
   );

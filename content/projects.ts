@@ -6,8 +6,9 @@ export const projects: Project[] = [
     title: 'Busio',
     description:
       'A full-stack bus reservation system built with Node.js/Express backend and Nuxt.js frontend applications.',
-    detailedDescription:
+    highlights: [
       'The system implements advanced seat availability algorithms, dynamic pricing based on seat priority, and comprehensive reservation management.',
+    ],
     techStack: [
       'TypeScript',
       'React',
@@ -25,7 +26,7 @@ export const projects: Project[] = [
     _id: '2',
     title: 'Project Two',
     description: 'This is the second project description.',
-    detailedDescription: 'Detailed information about Project Two.',
+    highlights: ['Detailed information about Project Two.'],
     techStack: [
       'JavaScript',
       'Vue.js',
@@ -44,7 +45,7 @@ export const projects: Project[] = [
     _id: '3',
     title: 'Project Three',
     description: 'This is the second project description.',
-    detailedDescription: 'Detailed information about Project Two.',
+    highlights: ['Detailed information about Project Two.'],
     techStack: [
       'JavaScript',
       'Vue.js',
@@ -63,7 +64,7 @@ export const projects: Project[] = [
     _id: '4',
     title: 'Project Four',
     description: 'This is the second project description.',
-    detailedDescription: 'Detailed information about Project Two.',
+    highlights: ['Detailed information about Project Two.'],
     techStack: [
       'JavaScript',
       'Vue.js',
@@ -82,7 +83,7 @@ export const projects: Project[] = [
     _id: '5',
     title: 'Project Five',
     description: 'This is the second project description.',
-    detailedDescription: 'Detailed information about Project Two.',
+    highlights: ['Detailed information about Project Two.'],
     techStack: [
       'JavaScript',
       'Vue.js',

@@ -26,11 +26,12 @@ export const projectType = defineType({
     defineField({
       name: 'description',
       type: 'string',
-      validation: (rule) => rule.required(),
     }),
     defineField({
-      name: 'detailedDescription',
-      type: 'string',
+      name: 'highlights',
+      type: 'array',
+      of: [defineArrayMember({ type: 'text' })],
+      validation: (rule) => rule.required(),
     }),
     defineField({
       name: 'techStack',

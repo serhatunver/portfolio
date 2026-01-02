@@ -47,13 +47,13 @@ export function ExperienceCard({ experience }: { experience: Experience }) {
       </CardHeader>
       <CardContent className="text-sm px-0">
         <ul className="space-y-1">
-          {experience.highlights.map((item, idx) => (
+          {experience.highlights.map((highlight, idx) => (
             <li key={idx}>
               <CircleCheckBig
                 className="inline mr-2 mb-1 text-muted-foreground"
                 size={14}
               />
-              {item}
+              {highlight}
             </li>
           ))}
         </ul>

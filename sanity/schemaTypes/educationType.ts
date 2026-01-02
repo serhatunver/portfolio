@@ -1,5 +1,5 @@
 import { GraduationCap } from 'lucide-react';
-import { defineField, defineType } from 'sanity';
+import { defineArrayMember, defineField, defineType } from 'sanity';
 import {
   orderRankField,
   orderRankOrdering,
@@ -61,8 +61,9 @@ export const educationType = defineType({
       validation: (rule) => rule.required(),
     }),
     defineField({
-      name: 'description',
-      type: 'text',
+      name: 'highlights',
+      type: 'array',
+      of: [defineArrayMember({ type: 'text' })],
       validation: (rule) => rule.required(),
     }),
     defineField({

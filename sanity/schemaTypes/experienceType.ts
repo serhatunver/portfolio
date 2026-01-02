@@ -1,5 +1,5 @@
 import { BriefcaseBusiness } from 'lucide-react';
-import { defineField, defineType } from 'sanity';
+import { defineArrayMember, defineField, defineType } from 'sanity';
 import {
   orderRankField,
   orderRankOrdering,
@@ -58,7 +58,7 @@ export const experienceType = defineType({
     defineField({
       name: 'highlights',
       type: 'array',
-      of: [{ type: 'string' }],
+      of: [defineArrayMember({ type: 'text' })],
       validation: (rule) => rule.required(),
     }),
     defineField({

@@ -12,7 +12,7 @@ import {
 
 import { TechBadge } from '@/components/common/TechBadge';
 
-import { Info, Eye, ExternalLink } from 'lucide-react';
+import { Info, CircleCheckBig, ExternalLink } from 'lucide-react';
 import { SiGithub } from '@icons-pack/react-simple-icons';
 
 import type { Project } from '@/types/content';
@@ -29,8 +29,18 @@ export function ProjectCard({ project }: { project: Project }) {
               </Button>
             </CardAction> */}
       </CardHeader>
-      <CardContent className="space-y-4">
-        <p>{project.detailedDescription}</p>
+      <CardContent className="space-y-4 text-sm">
+        <ul className="space-y-1">
+          {project.highlights.map((highlight, idx) => (
+            <li key={idx}>
+              <CircleCheckBig
+                className="inline mr-2 mb-1 text-muted-foreground"
+                size={14}
+              />
+              {highlight}
+            </li>
+          ))}
+        </ul>
         <div className="flex flex-wrap gap-2">
           {project.techStack.map((tech) => (
             <TechBadge key={tech} tech={tech} />

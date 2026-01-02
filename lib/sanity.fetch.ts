@@ -15,7 +15,7 @@ export async function fetchProjectsFromCMS(): Promise<Project[]> {
       title,
       slug: slug.current
       description,
-      detailedDescription,
+      highlights,
       techStack,
       githubLink,
       demoLink
@@ -34,7 +34,7 @@ export async function fetchEducationFromCMS(): Promise<Education[]> {
       startDate,
       endDate,
       gpa,
-      description,
+      highlights,
       institutionLogo
     }
   `);
