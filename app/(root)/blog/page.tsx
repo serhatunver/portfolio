@@ -1,5 +1,5 @@
-import { BlogPostCard } from '@/components/common/BlogPostCard';
 import { Section } from '@/components/layout/Section';
+import { BlogPostsSection } from '@/components/sections/BlogPostsSection';
 
 export default function Blog() {
   return (
@@ -10,7 +10,7 @@ export default function Blog() {
           Welcome to my blog! Here are my latest posts.
         </p>
       </Section>
-      <BlogPostCard />
+      <BlogPostsSection />
     </>
   );
 }

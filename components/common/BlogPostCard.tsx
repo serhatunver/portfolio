@@ -1,3 +1,5 @@
+import Link from 'next/link';
+import { BlogPost } from '@/types/content';
 import {
   Card,
   CardAction,
@@ -10,66 +12,39 @@ import {
 import { Button } from '@/components/ui/button';
 
 import { Badge } from '@/components/ui/badge';
-import { Github, CircleCheckBig } from 'lucide-react';
+import { ArrowRight, CircleCheckBig } from 'lucide-react';
 
-const BLOG_POSTS = [
-  {
-    title: 'Understanding React Hooks',
-    description:
-      'An in-depth look at React Hooks and how to use them effectively.',
-    techStack: ['React', 'JavaScript', 'Web Development'],
-    postLink: '#',
-  },
-  {
-    title: 'A Guide to Node.js Performance Optimization',
-    description:
-      'Tips and techniques for optimizing the performance of your Node.js applications.',
-    techStack: ['Node.js', 'JavaScript', 'Backend Development'],
-    postLink: '#',
-  },
-];
-
-export function BlogPostCard() {
+export function BlogPostCard({ blogPost }: { blogPost: BlogPost }) {
   return (
-    <>
-      {BLOG_POSTS.map((post, index) => (
-        <Card
-          key={index}
-          className="w-full mb-6 bg-background/50 backdrop-blur-m"
-        >
-          <CardHeader>
-            <CardTitle className="text-lg">{post.title}</CardTitle>
-            <CardDescription>{post.description}</CardDescription>
-          </CardHeader>
-          <CardContent className="space-y-4">
-            <div>
-              {post.techStack.map((tech) => (
-                <Badge
-                  key={tech}
-                  variant="outline"
-                  className="bg-purple-800 text-white mr-2 mb-2"
-                >
-                  <CircleCheckBig />
-                  {tech}
-                </Badge>
-              ))}
-            </div>
-          </CardContent>
-          <CardFooter className="flex justify-end">
-            <CardAction>
-              <Button asChild variant="link" size="sm" className="self-start">
-                <a
-                  href={post.postLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Read More
-                </a>
-              </Button>
-            </CardAction>
-          </CardFooter>
-        </Card>
-      ))}
-    </>
+    <Card className="w-full mb-6 bg-background/50 backdrop-blur-m">
+      <CardHeader>
+        <CardTitle className="text-lg">{blogPost.title}</CardTitle>
+        <CardDescription>{blogPost.excerpt}</CardDescription>
+      </CardHeader>
+      <CardContent className="space-y-4">
+        <div>
+          {blogPost.tags.map((tag) => (
+            <Badge
+              key={tag}
+              variant="outline"
+              className="bg-purple-800 text-white mr-2 mb-2"
+            >
+              <CircleCheckBig />
+              {tag}
+            </Badge>
+          ))}
+        </div>
+      </CardContent>
+      <CardFooter className="flex justify-end">
+        <CardAction>
+          <Button asChild variant="link" size="sm" className="self-start">
+            <Link href={`/blog/${blogPost.slug}`}>
+              Read More
+              <ArrowRight />
+            </Link>
+          </Button>
+        </CardAction>
+      </CardFooter>
+    </Card>
   );
 }

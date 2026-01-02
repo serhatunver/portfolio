@@ -5,6 +5,7 @@ import type {
   TechStack,
   HeroSection,
   AboutSection,
+  BlogPost,
 } from '@/types/content';
 
 import { projects } from '@/content/projects';
@@ -13,6 +14,7 @@ import { experience } from '@/content/experience';
 import { techStack } from '@/content/tech-stack';
 import { heroSection } from '@/content/hero-section';
 import { aboutSection } from '@/content/about-section';
+import { blogPosts } from '@/content/blogPosts';
 
 import {
   fetchProjectsFromCMS,
@@ -21,6 +23,7 @@ import {
   fetchTechStackFromCMS,
   fetchHeroSectionFromCMS,
   fetchAboutSectionFromCMS,
+  fetchBlogPostsFromCMS,
 } from './sanity.fetch';
 
 const useCMS = process.env.USE_CMS === 'true';
@@ -63,4 +66,11 @@ export async function getHeroSection(): Promise<HeroSection> {
 export async function getAboutSection(): Promise<AboutSection> {
   const sections = await withFallback(fetchAboutSectionFromCMS, [aboutSection]);
   return sections[0];
+}
+
+export async function getBlogPosts(): Promise<BlogPost[]> {
+  console.log('posts');
+  const posts = await withFallback(fetchBlogPostsFromCMS, blogPosts);
+  console.log('posts', posts[0].body);
+  return posts;
 }

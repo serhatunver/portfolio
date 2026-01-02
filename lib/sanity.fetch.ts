@@ -6,6 +6,7 @@ import type {
   TechStack,
   HeroSection,
   AboutSection,
+  BlogPost,
 } from '@/types/content';
 
 export async function fetchProjectsFromCMS(): Promise<Project[]> {
@@ -13,7 +14,7 @@ export async function fetchProjectsFromCMS(): Promise<Project[]> {
     *[_type == "project"] | order(orderRank) {
       _id,
       title,
-      slug: slug.current
+      "slug": slug.current
       description,
       highlights,
       techStack,
@@ -81,6 +82,20 @@ export async function fetchAboutSectionFromCMS(): Promise<AboutSection[]> {
     `*[_type == "aboutSection"]{
       title,
       content
+    }`,
+  );
+}
+
+export async function fetchBlogPostsFromCMS(): Promise<BlogPost[]> {
+  return client.fetch(
+    `*[_type == "blogPost"]{
+      _id,
+      title,
+      excerpt,
+      "slug": slug.current,
+      body,
+      tags,
+      categories
     }`,
   );
 }
