@@ -2,8 +2,6 @@ import type { Metadata } from 'next';
 import { Manrope } from 'next/font/google';
 import { ThemeProvider } from '@/components/theme-provider';
 import './globals.css';
-import { Header } from '@/components/layout/Header';
-import { Footer } from '@/components/layout/Footer';
 
 const manrope = Manrope({
   variable: '--font-manrope',
@@ -29,9 +27,7 @@ export default function RootLayout({
           enableSystem
           // disableTransitionOnChange
         >
-          <Header />
-          <main className="mx-auto w-full max-w-xl px-4">{children}</main>
-          <Footer />
+          {children}
         </ThemeProvider>
       </body>
     </html>
