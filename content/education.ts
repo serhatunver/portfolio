@@ -2,28 +2,32 @@ import type { Education } from '@/types/content';
 
 export const education: Education[] = [
   {
-    id: '1',
-    degree: 'Master of Science',
-    department: 'Software Engineering',
-    institution: 'Tech University of London',
-    duration: '2020 - 2022',
-    location: 'London, United Kingdom',
-    details:
-      'Specialized in software architecture, project management, and advanced programming concepts.',
-    gpa: '3.9 / 4.0',
+    _id: '1',
+    institution: 'Cukurova University',
+    degree: 'Bachelor of Science',
+    department: 'Computer Engineering',
+    startDate: 'Sep 2020',
+    isCurrent: false,
+    endDate: 'Dec 2025',
+    location: 'Adana, Türkiye',
+    description:
+      'Focused on core computer engineering topics including software development, algorithms, and computer systems, with a strong emphasis on practical projects.',
+    gpa: '3.22 / 4.0',
     institutionLogo:
       'https://upload.wikimedia.org/wikipedia/commons/b/b8/%C3%87ukurova_University_logo.svg',
   },
   {
-    id: '2',
+    _id: '2',
+    institution: 'Lublin University of Technology (Erasmus+)',
     degree: 'Bachelor of Science',
     department: 'Computer Science',
-    institution: 'Berlin University of Technology (Erasmus+)',
-    duration: '2016 - 2020',
-    location: 'Berlin, Germany',
-    details:
-      'Graduated with honors, focusing on software development, algorithms, and data structures.',
-    gpa: '3.8 / 4.0',
+    startDate: 'Sep 2024',
+    isCurrent: false,
+    endDate: 'Feb 2025',
+    location: 'Lublin, Poland',
+    description:
+      'Completed an Erasmus+ exchange program focused on computer science courses, gaining international academic experience and working in a diverse environment.',
+    gpa: '3.83 / 4.0',
     institutionLogo:
       'https://pollub.pl/fcp/sPREgARcJNScXKxEMUA9DA2ltVyVUFDFqUVJWazkALV96cypSPhRaWXI0D1ZUShtGPlY7MRk8VhIgXFdYVmsjBzRWKw/_global/public/biuro_rektora/zdjecia/logo_politechniki_lubelskiej.jpg',
   },

@@ -2,15 +2,18 @@ import type { Experience } from '@/types/content';
 
 export const experience: Experience[] = [
   {
-    id: '1',
-    company: 'Web Solutions',
-    role: 'Full Stack Developer',
-    duration: 'Feb 2022 - Present',
-    location: 'City, Country',
-    responsibilities: [
-      'Built and maintained web applications using Node.js and Express.',
-      'Integrated RESTful APIs and third-party services.',
-      'Implemented database solutions with MongoDB and PostgreSQL.',
+    _id: '1',
+    company: 'Crafton',
+    role: 'Frontend Developer Intern',
+    startDate: 'Sep 2025',
+    isCurrent: false,
+    endDate: 'Jan 2026',
+    location: 'Poznan, Poland',
+    highlights: [
+      'Developed reusable UI components (React, Next.js, TypeScript, Tailwind)',
+      'Enhanced responsiveness, styling, accessibility',
+      'Fixed UI/UX bugs and ensured cross-platform consistency',
+      'Maintained code quality via Storybook, linting, formatting',
     ],
     techStack: [
       'TypeScript',
@@ -20,20 +23,22 @@ export const experience: Experience[] = [
       'Storybook',
       'Git',
     ],
-    companyLogo: '',
+    companyLogo:
+      'https://media.licdn.com/dms/image/v2/C560BAQGjO48DKiiTxg/company-logo_200_200/company-logo_200_200/0/1630592564368/crafton_logo?e=2147483647&v=beta&t=KFco4Dwps0jlNpKdKd8T94Cwp-VCczEDam0eeZkyFwU',
   },
   {
-    id: '2',
-    company: 'Tech Corp',
-    role: 'Frontend Developer',
-    duration: 'Jan 2020 - Dec 2021',
-    location: 'City, Country',
-    responsibilities: [
+    _id: '2',
+    company: 'eQuota',
+    role: 'Frontend Developer Intern',
+    startDate: 'Jan 2023',
+    isCurrent: false,
+    endDate: 'Feb 2023',
+    location: 'Denizli, Türkiye',
+    highlights: [
       'Developed user-friendly web interfaces using Vue.js and Nuxt.',
-      // 'Collaborated with designers to implement responsive designs.',
-      // 'Optimized application performance and ensured cross-browser compatibility.',
     ],
     techStack: ['JavaScript', 'Nuxt', 'Vue.js', 'Tailwind CSS', 'Git'],
-    companyLogo: '',
+    companyLogo:
+      'https://media.licdn.com/dms/image/v2/C4E0BAQEJoAsaLO3LhA/company-logo_200_200/company-logo_200_200/0/1655234886153/equota_logo?e=2147483647&v=beta&t=ygyZjSMULM1aY6Nk9nhoaEjy3K48NZxNPjrL4PjZudM',
   },
 ];
