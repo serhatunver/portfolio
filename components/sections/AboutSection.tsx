@@ -4,7 +4,6 @@ import { getAboutSection } from '@/lib/cms';
 export async function AboutSection() {
   const aboutSection = await getAboutSection();
 
-  console.log(aboutSection);
   return (
     <Section>
       <Section.Content className="space-y-4">
