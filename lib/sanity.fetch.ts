@@ -10,10 +10,10 @@ import type {
 
 export async function fetchProjectsFromCMS(): Promise<Project[]> {
   return client.fetch(`
-    *[_type == "project"]{
+    *[_type == "project"] | order(orderRank) {
       _id,
       title,
-      slug,
+      slug: slug.current
       description,
       detailedDescription,
       techStack,
@@ -25,7 +25,7 @@ export async function fetchProjectsFromCMS(): Promise<Project[]> {
 
 export async function fetchEducationFromCMS(): Promise<Education[]> {
   return client.fetch(`
-    *[_type == "education"]{
+    *[_type == "education"] | order(orderRank) {
       _id,
       institution,
       degree,
@@ -42,7 +42,7 @@ export async function fetchEducationFromCMS(): Promise<Education[]> {
 
 export async function fetchExperienceFromCMS(): Promise<Experience[]> {
   return client.fetch(`
-    *[_type == "experience"] | order(endDate desc, startDate desc){
+    *[_type == "experience"] | order(orderRank) {
       _id,
       company,
       role,
@@ -59,7 +59,7 @@ export async function fetchExperienceFromCMS(): Promise<Experience[]> {
 
 export async function fetchTechStackFromCMS(): Promise<TechStack[]> {
   return client.fetch(`
-    *[_type == "techStack"]{
+    *[_type == "techStack"] | order(orderRank) {
       title,
       technologies
     }

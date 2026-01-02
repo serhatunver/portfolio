@@ -1,11 +1,16 @@
-import { defineField, defineType } from 'sanity';
 import { GraduationCap } from 'lucide-react';
+import { defineField, defineType } from 'sanity';
+import {
+  orderRankField,
+  orderRankOrdering,
+} from '@sanity/orderable-document-list';
 
 export const educationType = defineType({
   name: 'education',
   title: 'Education',
   type: 'document',
   icon: GraduationCap,
+  orderings: [orderRankOrdering],
   fields: [
     defineField({
       name: 'institution',
@@ -65,5 +70,6 @@ export const educationType = defineType({
       type: 'string',
       validation: (rule) => rule.required(),
     }),
+    orderRankField({ type: 'project', newItemPosition: 'before' }),
   ],
 });

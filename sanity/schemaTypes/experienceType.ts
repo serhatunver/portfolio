@@ -1,11 +1,16 @@
 import { BriefcaseBusiness } from 'lucide-react';
 import { defineField, defineType } from 'sanity';
+import {
+  orderRankField,
+  orderRankOrdering,
+} from '@sanity/orderable-document-list';
 
 export const experienceType = defineType({
   name: 'experience',
   title: 'Experience',
   type: 'document',
   icon: BriefcaseBusiness,
+  orderings: [orderRankOrdering],
   fields: [
     defineField({
       name: 'company',
@@ -62,12 +67,6 @@ export const experienceType = defineType({
       of: [{ type: 'string' }],
       validation: (rule) => rule.required(),
     }),
-  ],
-  orderings: [
-    {
-      title: 'Start Date (Newest)',
-      name: 'startDateDesc',
-      by: [{ field: 'startDate', direction: 'desc' }],
-    },
+    orderRankField({ type: 'project', newItemPosition: 'before' }),
   ],
 });

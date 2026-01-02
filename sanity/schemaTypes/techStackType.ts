@@ -1,11 +1,16 @@
 import { Code } from 'lucide-react';
 import { defineField, defineType } from 'sanity';
+import {
+  orderRankField,
+  orderRankOrdering,
+} from '@sanity/orderable-document-list';
 
 export const techStackType = defineType({
   name: 'techStack',
   title: 'TechStack',
   type: 'document',
   icon: Code,
+  orderings: [orderRankOrdering],
   fields: [
     defineField({
       name: 'title',
@@ -18,5 +23,6 @@ export const techStackType = defineType({
       of: [{ type: 'string' }],
       validation: (rule) => rule.required(),
     }),
+    orderRankField({ type: 'project', newItemPosition: 'before' }),
   ],
 });
