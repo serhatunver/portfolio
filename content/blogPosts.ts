@@ -1,24 +1,5 @@
 import type { BlogPost } from '@/types/content';
-
-import type { PortableTextBlock } from '@portabletext/types';
-
-export function convertStringToPortableText(
-  content: string,
-): PortableTextBlock[] {
-  return [
-    {
-      _type: 'block',
-      style: 'normal',
-      children: [
-        {
-          _type: 'span',
-          text: content,
-          marks: [],
-        },
-      ],
-    },
-  ];
-}
+import { convertStringToPortableText } from '@/lib/utils/portableText';
 
 export const blogPosts: BlogPost[] = [
   {
