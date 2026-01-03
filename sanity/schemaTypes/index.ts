@@ -7,6 +7,7 @@ import { educationType } from './educationType';
 import { experienceType } from './experienceType';
 import { techStackType } from './techStackType';
 import { blogPostType } from './blogPostType';
+import { siteSettingsType } from './siteSettingsType';
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
@@ -17,5 +18,6 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     experienceType,
     techStackType,
     blogPostType,
+    siteSettingsType,
   ],
 };

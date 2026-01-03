@@ -3,27 +3,28 @@ import type {
   Education,
   Experience,
   TechStack,
-  HeroSection,
-  AboutSection,
   BlogPost,
+  Hero,
+  About,
+  Footer,
 } from '@/types/content';
 
 import { projects } from '@/content/projects';
 import { education } from '@/content/education';
 import { experience } from '@/content/experience';
 import { techStack } from '@/content/tech-stack';
-import { heroSection } from '@/content/hero-section';
-import { aboutSection } from '@/content/about-section';
 import { blogPosts } from '@/content/blogPosts';
+import { siteSettings } from '@/content/siteSettings';
 
 import {
   fetchProjectsFromCMS,
   fetchEducationFromCMS,
   fetchExperienceFromCMS,
   fetchTechStackFromCMS,
-  fetchHeroSectionFromCMS,
-  fetchAboutSectionFromCMS,
   fetchBlogPostsFromCMS,
+  fetchHeroFromCMS,
+  fetchAboutFromCMS,
+  fetchFooterFromCMS,
 } from './sanity.fetch';
 
 const useCMS = process.env.USE_CMS === 'true';
@@ -35,9 +36,21 @@ async function withFallback<T>(
   if (!useCMS) return localData;
 
   try {
-    return await cmsFetcher();
+    const data = await cmsFetcher();
+
+    if (!data) {
+      console.log('[CMS FALLBACK] CMS data empty, return localData');
+      return localData;
+    }
+
+    return data;
   } catch (error) {
-    console.error('[CMS FALLBACK]', error);
+    if (error instanceof Error) {
+      console.error('[CMS FALLBACK]', error.message, error.stack);
+    } else {
+      console.error('[CMS FALLBACK]', error);
+    }
+
     return localData;
   }
 }
@@ -58,19 +71,18 @@ export function getTechStack(): Promise<TechStack[]> {
   return withFallback(fetchTechStackFromCMS, techStack);
 }
 
-export async function getHeroSection(): Promise<HeroSection> {
-  const sections = await withFallback(fetchHeroSectionFromCMS, [heroSection]);
-  return sections[0];
+export function getBlogPosts(): Promise<BlogPost[]> {
+  return withFallback(fetchBlogPostsFromCMS, blogPosts);
 }
 
-export async function getAboutSection(): Promise<AboutSection> {
-  const sections = await withFallback(fetchAboutSectionFromCMS, [aboutSection]);
-  return sections[0];
+export function getHero(): Promise<Hero> {
+  return withFallback(fetchHeroFromCMS, siteSettings.hero);
 }
 
-export async function getBlogPosts(): Promise<BlogPost[]> {
-  console.log('posts');
-  const posts = await withFallback(fetchBlogPostsFromCMS, blogPosts);
-  console.log('posts', posts[0].body);
-  return posts;
+export function getAbout(): Promise<About> {
+  return withFallback(fetchAboutFromCMS, siteSettings.about);
+}
+
+export function getFooter(): Promise<Footer> {
+  return withFallback(fetchFooterFromCMS, siteSettings.footer);
 }

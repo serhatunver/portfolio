@@ -1,10 +1,14 @@
 import * as SimpleIcons from '@icons-pack/react-simple-icons';
 import type { IconType } from '@icons-pack/react-simple-icons';
+import { LinkedinIcon } from '@sanity/icons';
 
 export const ICONS: Record<
   string,
-  { Icon: IconType; hex: string; darkInvert?: boolean }
+  { Icon: IconType; hex?: string; darkInvert?: boolean }
 > = {
+  Github: { Icon: SimpleIcons.SiGithub, hex: SimpleIcons.SiGithubHex },
+  Linkedin: { Icon: LinkedinIcon },
+  Mail: { Icon: SimpleIcons.SiGmail, hex: SimpleIcons.SiGmailHex },
   React: { Icon: SimpleIcons.SiReact, hex: SimpleIcons.SiReactHex },
   NodeJS: { Icon: SimpleIcons.SiNodedotjs, hex: SimpleIcons.SiNodedotjsHex },
   TypeScript: {

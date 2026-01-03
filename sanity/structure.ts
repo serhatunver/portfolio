@@ -11,6 +11,7 @@ export const structure: StructureResolver = (S, context) =>
       S.documentTypeListItem('education').title('Education'),
       S.documentTypeListItem('techStack').title('Tech Stack'),
       S.documentTypeListItem('blogPost').title('Blog Posts'),
+      S.documentTypeListItem('siteSettings').title('Site Settings'),
       S.divider(),
       orderableDocumentListDeskItem({
         type: 'project',
@@ -45,6 +46,7 @@ export const structure: StructureResolver = (S, context) =>
             'education',
             'techStack',
             'blogPost',
+            'siteSettings',
           ].includes(item.getId()!),
       ),
     ]);

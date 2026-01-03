@@ -4,9 +4,10 @@ import type {
   Education,
   Experience,
   TechStack,
-  HeroSection,
-  AboutSection,
   BlogPost,
+  Hero,
+  About,
+  Footer,
 } from '@/types/content';
 
 export async function fetchProjectsFromCMS(): Promise<Project[]> {
@@ -14,7 +15,7 @@ export async function fetchProjectsFromCMS(): Promise<Project[]> {
     *[_type == "project"] | order(orderRank) {
       _id,
       title,
-      "slug": slug.current
+      "slug": slug.current,
       description,
       highlights,
       techStack,
@@ -67,25 +68,6 @@ export async function fetchTechStackFromCMS(): Promise<TechStack[]> {
   `);
 }
 
-export async function fetchHeroSectionFromCMS(): Promise<HeroSection[]> {
-  return client.fetch(
-    `*[_type == "heroSection"]
-    {
-      title,
-      description
-    }`,
-  );
-}
-
-export async function fetchAboutSectionFromCMS(): Promise<AboutSection[]> {
-  return client.fetch(
-    `*[_type == "aboutSection"]{
-      title,
-      content
-    }`,
-  );
-}
-
 export async function fetchBlogPostsFromCMS(): Promise<BlogPost[]> {
   return client.fetch(
     `*[_type == "blogPost"]{
@@ -98,4 +80,25 @@ export async function fetchBlogPostsFromCMS(): Promise<BlogPost[]> {
       categories
     }`,
   );
+}
+
+// Hero (home page)
+export async function fetchHeroFromCMS(): Promise<Hero> {
+  return client.fetch(`
+    *[_type == "siteSettings"][0].hero
+  `);
+}
+
+// About (about page)
+export async function fetchAboutFromCMS(): Promise<About> {
+  return client.fetch(`
+    *[_type == "siteSettings"][0].about
+  `);
+}
+
+// Footer (global, layout)
+export async function fetchFooterFromCMS(): Promise<Footer> {
+  return client.fetch(`
+    *[_type == "siteSettings"][0].footer
+  `);
 }

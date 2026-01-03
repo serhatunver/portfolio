@@ -1,18 +1,31 @@
+import { getAbout } from '@/lib/cms';
 import { Section } from '@/components/layout/Section';
-import { getAboutSection } from '@/lib/cms';
+import { PortableText } from '@portabletext/react';
+import type { PortableTextComponents } from '@portabletext/react';
+
+const components: PortableTextComponents = {
+  block: {
+    normal: ({ children }) => <p className="mb-4 last:mb-0">{children}</p>,
+    h2: ({ children }) => <h2 className="text-lg font-bold">{children}</h2>,
+  },
+  marks: {
+    strong: ({ children }) => <strong>{children}</strong>,
+    link: ({ children, value }) => (
+      <a href={value.href} target="_blank" rel="noreferrer">
+        {children}
+      </a>
+    ),
+  },
+};
 
 export async function AboutSection() {
-  const aboutSection = await getAboutSection();
+  const about = await getAbout();
 
   return (
     <Section>
       <Section.Content className="space-y-4">
-        <h1 className="text-2xl font-bold">{aboutSection.title}</h1>
-        {aboutSection.content.map((item) => (
-          <p key={item} className="text-base text-muted-foreground">
-            {item}
-          </p>
-        ))}
+        <h1 className="text-2xl font-bold">{about.title}</h1>
+        <PortableText value={about.content} components={components} />
       </Section.Content>
     </Section>
   );

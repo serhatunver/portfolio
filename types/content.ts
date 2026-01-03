@@ -60,26 +60,44 @@ export type TechStack = {
   technologies: string[];
 };
 
-export type HeroSection = {
+export type CTA = {
+  label: string;
+  href: string;
+  type?: 'default' | 'secondary' | 'outline' | 'ghost' | 'destructive' | 'link';
+  target?: '_self' | '_blank';
+  icon?: string;
+  disabled?: boolean;
+  ariaLabel?: string;
+  analyticsId?: string;
+};
+
+export type Contact = {
+  label: string;
+  href: string;
+  icon: 'Linkedin' | 'Github' | 'Mail';
+};
+
+export type Hero = {
   title: string;
   description: string;
+  cta: CTA[];
 };
 
-export type AboutSection = {
+export type About = {
   title: string;
-  content: string[];
-};
-
-type ContactType = 'github' | 'linkedin' | 'email';
-
-export type FooterLink = {
-  text: ContactType;
-  href: string;
+  content: PortableTextBlock[];
 };
 
 export type Footer = {
-  name: string;
+  fullName: string;
   title: string;
   message: string;
-  links: FooterLink[];
+  cta: CTA[];
+  contact: Contact[];
+};
+
+export type SiteSettings = {
+  hero: Hero;
+  about: About;
+  footer: Footer;
 };
