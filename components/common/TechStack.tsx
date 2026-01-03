@@ -21,7 +21,7 @@ export function TechStack({ stack }: { stack: TechStack }) {
               key={`${stack.title}-${tech}`}
               size="lg"
               variant="outline"
-              className="brightness-100 dark:brightness-150"
+              className="brightness-100 dark:brightness-150 hover:cursor-pointer hover:scale-110 odd:hover:rotate-3 even:hover:-rotate-3 transition-all duration-300"
               style={{
                 backgroundColor: `${hex}15`,
                 borderColor: `${darkInvert ? '#666666' : hex}60`,
