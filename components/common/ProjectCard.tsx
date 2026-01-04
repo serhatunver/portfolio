@@ -19,18 +19,13 @@ import type { Project } from '@/types/content';
 
 export function ProjectCard({ project }: { project: Project }) {
   return (
-    <Card className="w-full rounded-2xl bg-background gap-4">
+    <Card className="w-full shadow-none rounded-2xl bg-transparent gap-4">
       <CardHeader>
-        <CardTitle className="text-lg">{project.title}</CardTitle>
+        <CardTitle className="text-lg hover-slide">{project.title}</CardTitle>
         <CardDescription>{project.description}</CardDescription>
-        {/* <CardAction>
-              <Button asChild variant="link" size="sm" className="self-start">
-                <Link href="/">Sign Up</Link>
-              </Button>
-            </CardAction> */}
       </CardHeader>
       <CardContent className="space-y-4 text-sm">
-        <ul className="space-y-1">
+        {/* <ul className="space-y-1">
           {project.highlights.map((highlight, idx) => (
             <li key={idx}>
               <CircleCheckBig
@@ -40,7 +35,7 @@ export function ProjectCard({ project }: { project: Project }) {
               {highlight}
             </li>
           ))}
-        </ul>
+        </ul> */}
         <div className="flex flex-wrap gap-2">
           {project.techStack.map((tech) => (
             <TechBadge key={tech} tech={tech} />

@@ -128,3 +128,11 @@
     cursor: pointer;
   }
 }
+
+.hover-slide {
+  @apply transition-all duration-200 hover:translate-x-1;
+}
+
+.hover-lift {
+  @apply transition-all duration-200 ease-out hover:-translate-y-1;
+}

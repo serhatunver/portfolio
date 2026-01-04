@@ -17,7 +17,7 @@ import { formatDuration } from '@/lib/utils/date';
 
 export function ExperienceCard({ experience }: { experience: Experience }) {
   return (
-    <Card className="w-full border-none shadow-none bg-background gap-4 py-4">
+    <Card className="w-full border-none shadow-none bg-transparent gap-4 py-4">
       <CardHeader className="flex items-center gap-4 px-0">
         <Avatar className="size-12 self-start border-2">
           <AvatarImage src={experience.companyLogo} alt={experience.company} />
@@ -30,7 +30,7 @@ export function ExperienceCard({ experience }: { experience: Experience }) {
           </AvatarFallback>
         </Avatar>
         <div className="flex flex-col justify-between w-full space-y-2">
-          <CardTitle className="tracking-tight">
+          <CardTitle className="tracking-tight hover-slide">
             {experience.role} @{experience.company}
           </CardTitle>
           <CardDescription className="flex flex-wrap gap-2">
@@ -48,7 +48,7 @@ export function ExperienceCard({ experience }: { experience: Experience }) {
       <CardContent className="text-sm px-0">
         <ul className="space-y-1">
           {experience.highlights.map((highlight, idx) => (
-            <li key={idx}>
+            <li key={idx} className="hover-slide">
               <CircleCheckBig
                 className="inline mr-2 mb-1 text-muted-foreground"
                 size={14}

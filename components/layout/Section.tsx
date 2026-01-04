@@ -35,7 +35,7 @@ export function Section({
           {(title || seeAllLink) && (
             <div className="flex items-center justify-between">
               {title && (
-                <h2 className="flex items-center text-xl font-medium tracking-tight">
+                <h2 className="flex w-full items-center text-xl font-medium tracking-tight hover-slide">
                   <ChevronsRight size={20} />
                   <span>{title}</span>
                 </h2>
@@ -46,7 +46,7 @@ export function Section({
                   asChild
                   variant="link"
                   size="sm"
-                  className="has-[>svg]:px-0 px-0"
+                  className="has-[>svg]:px-0 px-0 hover-slide"
                 >
                   <Link href={seeAllLink}>
                     See all
