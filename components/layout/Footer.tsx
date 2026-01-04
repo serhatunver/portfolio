@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import type { Footer } from '@/types/content';
-import { ICONS } from '@/lib/constants/icons';
+import { ICONS } from '@/components/icons/registry';
+import { cn } from '@/lib/utils';
 
 export async function Footer({ footer }: { footer: Footer }) {
   return (
@@ -27,7 +28,10 @@ export async function Footer({ footer }: { footer: Footer }) {
       </section>
       <section className="flex flex-wrap items-center gap-2">
         {footer.contact.map((item) => {
-          const { Icon } = ICONS[item.icon];
+          const data = ICONS[item.icon as keyof typeof ICONS];
+          if (!data) return null;
+
+          const { Icon, hex, darkInvert } = data;
           return (
             <Link
               key={item.label}
@@ -36,7 +40,12 @@ export async function Footer({ footer }: { footer: Footer }) {
               rel="noopener noreferrer"
               className="flex items-center gap-1 hover:text-foreground transition-colors"
             >
-              <Icon className="size-3.5 text-foreground" />
+              {/* <Icon className="size-3.5" /> */}
+              <Icon
+                className={cn('w-3 h-3', darkInvert && 'dark:invert')}
+                style={hex ? { color: hex } : undefined}
+              />
+
               <span>{item.label}</span>
               <span className="text-muted-foreground/60">/</span>
             </Link>
