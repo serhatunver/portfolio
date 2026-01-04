@@ -1,17 +1,15 @@
-import { ICONS } from '@/lib/constants/icons';
+import { ICONS } from '@/components/icons/registry';
 import { Badge } from '@/components/ui/badge';
-import type { TechStack } from '@/types/content';
+import { cn } from '@/lib/utils';
+import type { TechStack as TechStackType } from '@/types/content';
 
-export function TechStack({ stack }: { stack: TechStack }) {
+export function TechStack({ stack }: { stack: TechStackType }) {
   return (
     <div key={stack.title}>
-      {/* Section Title */}
       <h3 className="text-base font-medium mb-2">{stack.title}</h3>
-
-      {/* Badges */}
       <div className="flex flex-wrap gap-2">
         {stack.technologies.map((tech) => {
-          const data = ICONS[tech];
+          const data = ICONS[tech as keyof typeof ICONS];
           if (!data) return null;
 
           const { Icon, hex, darkInvert } = data;
@@ -21,16 +19,20 @@ export function TechStack({ stack }: { stack: TechStack }) {
               key={`${stack.title}-${tech}`}
               size="lg"
               variant="outline"
-              className="brightness-100 dark:brightness-150 hover:cursor-pointer hover:scale-110 odd:hover:rotate-3 even:hover:-rotate-3 transition-all duration-300"
+              className={cn(
+                'brightness-100 dark:brightness-150 hover:cursor-pointer hover:scale-110',
+                'odd:hover:rotate-3 even:hover:-rotate-3 transition-all duration-300',
+              )}
               style={{
-                backgroundColor: `${hex}15`,
-                borderColor: `${darkInvert ? '#666666' : hex}60`,
+                backgroundColor: hex ? `${hex}15` : undefined,
+                borderColor: hex
+                  ? `${darkInvert ? '#666666' : hex}60`
+                  : undefined,
               }}
             >
               <Icon
-                color="default"
-                className={`${darkInvert ? 'dark:invert' : ''}`}
-                size={20}
+                className={cn('w-5 h-5', darkInvert && 'dark:invert')}
+                style={hex ? { color: hex } : undefined}
               />
               <span className="text-black dark:text-white">{tech}</span>
             </Badge>

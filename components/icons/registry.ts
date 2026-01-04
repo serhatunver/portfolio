@@ -1,13 +1,16 @@
 import * as SimpleIcons from '@icons-pack/react-simple-icons';
-import type { IconType } from '@icons-pack/react-simple-icons';
-import { LinkedinIcon } from '@sanity/icons';
+import type { IconEntry } from './types';
 
-export const ICONS: Record<
-  string,
-  { Icon: IconType; hex?: string; darkInvert?: boolean }
-> = {
-  Github: { Icon: SimpleIcons.SiGithub, hex: SimpleIcons.SiGithubHex },
-  Linkedin: { Icon: LinkedinIcon },
+import { SanityIcon } from './custom/SanityIcon';
+import { LinkedinIcon } from './custom/LinkedinIcon';
+
+export const ICONS: Record<string, IconEntry> = {
+  Github: {
+    Icon: SimpleIcons.SiGithub,
+    hex: SimpleIcons.SiGithubHex,
+    darkInvert: true,
+  },
+  Linkedin: { Icon: LinkedinIcon, hex: '#000000', darkInvert: true },
   Mail: { Icon: SimpleIcons.SiGmail, hex: SimpleIcons.SiGmailHex },
   React: { Icon: SimpleIcons.SiReact, hex: SimpleIcons.SiReactHex },
   NodeJS: { Icon: SimpleIcons.SiNodedotjs, hex: SimpleIcons.SiNodedotjsHex },
@@ -72,5 +75,20 @@ export const ICONS: Record<
   Storybook: {
     Icon: SimpleIcons.SiStorybook,
     hex: SimpleIcons.SiStorybookHex,
+  },
+  Vercel: {
+    Icon: SimpleIcons.SiVercel,
+    hex: SimpleIcons.SiVercelHex,
+    darkInvert: true,
+  },
+  'shadcn/ui': {
+    Icon: SimpleIcons.SiShadcnui,
+    hex: SimpleIcons.SiShadcnuiHex,
+    darkInvert: true,
+  },
+  Sanity: {
+    Icon: SanityIcon,
+    hex: '#000000',
+    darkInvert: true,
   },
 };
