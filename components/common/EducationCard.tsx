@@ -15,7 +15,7 @@ import { formatDuration } from '@/lib/utils/date';
 
 export function EducationCard({ education }: { education: Education }) {
   return (
-    <Card className="w-full border-none shadow-none bg-background gap-4 py-4">
+    <Card className="w-full border-none shadow-none bg-transparent gap-4 py-4">
       <CardHeader className="flex items-center gap-4 px-0">
         <Avatar className="size-12 border-2">
           <AvatarImage
@@ -31,8 +31,8 @@ export function EducationCard({ education }: { education: Education }) {
           </AvatarFallback>
         </Avatar>
         <CardTitle className="flex flex-col text-base tracking-tight">
-          <span className="text-base">{education.institution}</span>
-          <CardDescription className="font-normal">
+          <span className="text-base hover-slide">{education.institution}</span>
+          <CardDescription className="font-normal hover-slide">
             {education.degree} &bull; {education.department}
           </CardDescription>
         </CardTitle>
@@ -54,7 +54,7 @@ export function EducationCard({ education }: { education: Education }) {
       <CardFooter className="text-sm px-0">
         <ul className="space-y-1">
           {education.highlights.map((highlight, idx) => (
-            <li key={idx}>
+            <li key={idx} className="hover-slide">
               <CircleCheckBig
                 className="inline mr-2 mb-1 text-muted-foreground"
                 size={14}
