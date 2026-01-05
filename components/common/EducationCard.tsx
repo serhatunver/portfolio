@@ -11,15 +11,18 @@ import {
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Badge } from '@/components/ui/badge';
 import { MapPin, Calendar, GraduationCap, CircleCheckBig } from 'lucide-react';
+
 import { formatDuration } from '@/lib/utils/date';
+import { urlFor } from '@/sanity/lib/image';
 
 export function EducationCard({ education }: { education: Education }) {
+  console.log(typeof education.institutionLogo);
   return (
     <Card className="w-full border-none shadow-none bg-transparent gap-4 py-4">
       <CardHeader className="flex items-center gap-4 px-0">
         <Avatar className="size-12 border-2">
           <AvatarImage
-            src={education.institutionLogo}
+            src={urlFor(education.institutionLogo).url()}
             alt={education.institution}
           />
           <AvatarFallback>

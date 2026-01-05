@@ -52,8 +52,11 @@ export const experienceType = defineType({
     }),
     defineField({
       name: 'companyLogo',
-      type: 'string',
-      validation: (rule) => rule.required(),
+      title: 'Company Logo',
+      type: 'image',
+      options: {
+        accept: 'image/svg+xml',
+      },
     }),
     defineField({
       name: 'highlights',

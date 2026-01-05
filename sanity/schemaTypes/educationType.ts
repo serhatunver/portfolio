@@ -68,8 +68,11 @@ export const educationType = defineType({
     }),
     defineField({
       name: 'institutionLogo',
-      type: 'string',
-      validation: (rule) => rule.required(),
+      title: 'Institution Logo',
+      type: 'image',
+      options: {
+        accept: 'image/svg+xml',
+      },
     }),
     orderRankField({ type: 'project', newItemPosition: 'before' }),
   ],
