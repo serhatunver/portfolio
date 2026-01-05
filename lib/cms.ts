@@ -38,7 +38,7 @@ async function withFallback<T>(
   try {
     const data = await cmsFetcher();
 
-    if (!data) {
+    if (!data || (Array.isArray(data) && data.length === 0)) {
       console.log('[CMS FALLBACK] CMS data empty, return localData');
       return localData;
     }
