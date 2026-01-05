@@ -1,4 +1,5 @@
 import type { PortableTextBlock } from 'next-sanity';
+import type { SanityImageSource } from '@sanity/image-url';
 
 export type Project = {
   _id: string;
@@ -22,7 +23,7 @@ export type Education = {
   location: string;
   highlights: string[];
   gpa: string;
-  institutionLogo: string;
+  institutionLogo: SanityImageSource;
 };
 
 export type Experience = {
@@ -35,7 +36,7 @@ export type Experience = {
   location: string;
   highlights: string[];
   techStack: string[];
-  companyLogo?: string;
+  companyLogo: SanityImageSource;
 };
 
 export type Category = {
