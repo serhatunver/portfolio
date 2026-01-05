@@ -9,7 +9,7 @@ import { Button } from '@/components/ui/button';
 
 import { ArrowLeft } from 'lucide-react';
 
-type ProjectDetailsPageProps = {
+type BlogPostDetailsPageProps = {
   params: Promise<{
     slug: string;
   }>;
@@ -41,9 +41,9 @@ const components: PortableTextComponents = {
   },
 };
 
-export default async function ProjectDetailsPage({
+export default async function BlogPostDetailsPage({
   params,
-}: ProjectDetailsPageProps) {
+}: BlogPostDetailsPageProps) {
   const blogPosts = await getBlogPosts();
   const { slug } = await params;
 
