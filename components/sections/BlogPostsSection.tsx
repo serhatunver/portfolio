@@ -1,5 +1,4 @@
 import { Section } from '@/components/layout/Section';
-// import { ProjectList } from '@/components/common/ProjectList';
 import { BlogPostCard } from '../common/BlogPostCard';
 import { getBlogPosts } from '@/lib/cms';
 
