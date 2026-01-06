@@ -13,7 +13,7 @@ import { Badge } from '@/components/ui/badge';
 import { MapPin, Calendar, GraduationCap, CircleCheckBig } from 'lucide-react';
 
 import { formatDuration } from '@/lib/utils/date';
-import { urlFor } from '@/sanity/lib/image';
+import { urlFor } from '@/lib/cms/image';
 
 export function EducationCard({ education }: { education: Education }) {
   console.log(typeof education.institutionLogo);

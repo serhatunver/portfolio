@@ -14,7 +14,7 @@ import { Badge } from '@/components/ui/badge';
 import { CircleCheckBig, MapPin, Calendar } from 'lucide-react';
 
 import { formatDuration } from '@/lib/utils/date';
-import { urlFor } from '@/sanity/lib/image';
+import { urlFor } from '@/lib/cms/image';
 
 export function ExperienceCard({ experience }: { experience: Experience }) {
   return (

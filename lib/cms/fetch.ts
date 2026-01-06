@@ -1,4 +1,4 @@
-import { client } from './sanity.client';
+import { client } from './client';
 import type {
   Project,
   Education,
