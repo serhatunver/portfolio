@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { Section } from '@/components/layout/Section';
-import { Button } from '@/components/ui/button';
+import { Button } from '@/components/animate-ui/components/buttons/button';
 import { getHero } from '@/lib/cms';
 
 export async function HeroSection() {
@@ -14,12 +14,7 @@ export async function HeroSection() {
 
       <div className="mt-6 flex gap-3">
         {hero.cta.map((item) => (
-          <Button
-            key={item.label}
-            asChild
-            variant={item.type}
-            className="hover:scale-105 transition-all duration-100"
-          >
+          <Button key={item.label} asChild variant={item.type}>
             <Link href={item.href}>{item.label}</Link>
           </Button>
         ))}

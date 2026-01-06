@@ -1,4 +1,4 @@
-import { Button } from '@/components/ui/button';
+import { Button } from '@/components/animate-ui/components/buttons/button';
 import Link from 'next/link';
 import { ChevronsRight, ArrowRight } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -52,7 +52,7 @@ export function Section({
                   asChild
                   variant="link"
                   size="sm"
-                  className="has-[>svg]:px-0 px-0 hover-slide"
+                  className="has-[>svg]:px-0 px-0"
                 >
                   <Link href={seeAllLink}>
                     See all

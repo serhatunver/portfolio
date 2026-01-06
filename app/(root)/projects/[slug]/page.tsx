@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { getProjects } from '@/lib/cms';
 import { Section } from '@/components/layout/Section';
 import { TechBadge } from '@/components/common/TechBadge';
-import { Button } from '@/components/ui/button';
+import { Button } from '@/components/animate-ui/components/buttons/button';
 
 import { ArrowLeft, ExternalLink, CircleCheckBig } from 'lucide-react';
 import { SiGithub } from '@icons-pack/react-simple-icons';

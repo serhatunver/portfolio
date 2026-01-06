@@ -5,7 +5,7 @@ import type { PortableTextComponents } from '@portabletext/react';
 
 import { getBlogPosts } from '@/lib/cms';
 import { Section } from '@/components/layout/Section';
-import { Button } from '@/components/ui/button';
+import { Button } from '@/components/animate-ui/components/buttons/button';
 
 import { ArrowLeft } from 'lucide-react';
 
