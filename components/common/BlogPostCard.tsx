@@ -9,7 +9,7 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
+import { Button } from '@/components/animate-ui/components/buttons/button';
 
 import { Badge } from '@/components/ui/badge';
 import { ArrowRight, CircleCheckBig } from 'lucide-react';
