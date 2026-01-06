@@ -25,7 +25,7 @@ import {
   fetchHeroFromCMS,
   fetchAboutFromCMS,
   fetchFooterFromCMS,
-} from './sanity.fetch';
+} from './fetch';
 
 const useCMS = process.env.USE_CMS === 'true';
 
