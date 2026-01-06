@@ -10,6 +10,7 @@ type SectionProps = {
   seeAllLink?: string;
   ariaLabel?: string;
   paddingNone?: boolean;
+  stickyTitle?: boolean;
   className?: string;
   children: React.ReactNode;
 };
@@ -20,6 +21,7 @@ export function Section({
   seeAllLink,
   ariaLabel,
   paddingNone = false,
+  stickyTitle = true,
   className,
   children,
 }: SectionProps) {
@@ -31,7 +33,11 @@ export function Section({
       aria-label={ariaLabel ?? title}
     >
       {hasHeader && (
-        <header className="mb-5 space-y-1">
+        <header
+          className={cn('py-3 space-y-1', {
+            'sticky top-17 z-10 bg-background': stickyTitle,
+          })}
+        >
           {(title || seeAllLink) && (
             <div className="flex items-center justify-between">
               {title && (
