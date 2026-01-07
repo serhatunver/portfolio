@@ -2,15 +2,13 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { useIsMobile } from '@/hooks/use-mobile';
+import { cn } from '@/lib/utils';
+import { Button } from '@/components/animate-ui/components/buttons/button';
 import {
   NavigationMenu,
-  NavigationMenuContent,
+  NavigationMenuList,
   NavigationMenuItem,
   NavigationMenuLink,
-  NavigationMenuList,
-  NavigationMenuTrigger,
-  navigationMenuTriggerStyle,
 } from '@/components/ui/navigation-menu';
 
 interface NavItem {
@@ -25,33 +23,59 @@ const NAV_ITEMS: NavItem[] = [
   { title: 'Projects', href: '/projects' },
 ];
 
-export function NavMenu() {
-  const isMobile = useIsMobile();
+export type NavMenuProps = {
+  orientation?: 'horizontal' | 'vertical';
+  onItemClick?: () => void;
+};
 
+export function NavMenu({
+  orientation = 'horizontal',
+  onItemClick,
+}: NavMenuProps) {
   const pathname = usePathname();
 
-  const isActive = (navItem: NavItem) => {
-    if (navItem.href === '/') return pathname === '/';
-
-    return navItem.href === pathname || pathname.startsWith(`${navItem.href}/`);
-  };
+  const isActive = (navItem: NavItem) =>
+    navItem.href === '/'
+      ? pathname === '/'
+      : pathname === navItem.href || pathname.startsWith(`${navItem.href}/`);
 
   return (
-    <NavigationMenu viewport={isMobile}>
-      <NavigationMenuList className="gap-0 md:gap-4">
+    <NavigationMenu
+      className={cn(
+        'max-w-full',
+        orientation === 'vertical'
+          ? 'flex flex-col items-stretch justify-start'
+          : 'flex',
+      )}
+    >
+      <NavigationMenuList
+        className={cn(
+          orientation === 'horizontal'
+            ? 'gap-4 flex-row'
+            : 'flex-col gap-0 w-full',
+        )}
+      >
         {NAV_ITEMS.map((item) => (
-          <NavigationMenuItem key={item.title}>
+          <NavigationMenuItem
+            key={item.title}
+            className={cn('w-full', orientation === 'vertical' && 'border-b')}
+          >
             <NavigationMenuLink asChild>
-              <Link
-                href={item.href}
-                className={`transition-colors font-medium ${
+              <Button
+                asChild
+                variant={orientation === 'horizontal' ? 'link' : 'link'}
+                size="lg"
+                onClick={onItemClick}
+                className={cn(
+                  orientation === 'vertical' ? 'w-full text-left py-8' : '',
+                  'transition-colors text-base font-medium',
                   isActive(item)
                     ? 'text-foreground'
-                    : 'text-muted-foreground hover:text-foreground dark:text-muted-foreground dark:hover:text-foreground'
-                }`}
+                    : 'text-muted-foreground hover:text-foreground dark:text-muted-foreground dark:hover:text-foreground',
+                )}
               >
-                {item.title}
-              </Link>
+                <Link href={item.href}>{item.title}</Link>
+              </Button>
             </NavigationMenuLink>
           </NavigationMenuItem>
         ))}
