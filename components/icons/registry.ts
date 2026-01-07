@@ -91,4 +91,30 @@ export const ICONS: Record<string, IconEntry> = {
     hex: '#000000',
     darkInvert: true,
   },
+  'Socket.io': {
+    Icon: SimpleIcons.SiSocketdotio,
+    hex: SimpleIcons.SiSocketdotioHex,
+    darkInvert: true,
+  },
+  Puppeteer: {
+    Icon: SimpleIcons.SiPuppeteer,
+    hex: SimpleIcons.SiPuppeteerHex,
+  },
+  YOLO: {
+    Icon: SimpleIcons.SiYolo,
+    hex: SimpleIcons.SiYoloHex,
+  },
+  FastAPI: {
+    Icon: SimpleIcons.SiFastapi,
+    hex: SimpleIcons.SiFastapiHex,
+  },
+  PaddleOCR: {
+    Icon: SimpleIcons.SiPaddlepaddle,
+    hex: SimpleIcons.SiPaddlepaddleHex,
+  },
+  Quasar: {
+    Icon: SimpleIcons.SiQuasar,
+    hex: SimpleIcons.SiQuasarHex,
+    darkInvert: true,
+  },
 };
