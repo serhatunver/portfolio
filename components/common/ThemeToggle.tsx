@@ -2,7 +2,7 @@
 
 import { useTheme } from 'next-themes';
 import { Moon, Sun } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { Button } from '@/components/animate-ui/components/buttons/button';
 
 export function ThemeToggle() {
   const { theme, systemTheme, setTheme } = useTheme();
@@ -22,7 +22,7 @@ export function ThemeToggle() {
   return (
     <Button
       variant="outline"
-      size="icon"
+      size="icon-lg"
       onClick={toggleTheme}
       aria-label="Toggle theme"
       className="relative p-0 overflow-hidden"
