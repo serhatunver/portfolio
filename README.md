@@ -45,7 +45,6 @@ Sanity CMS integration with schema definitions and an embedded Studio interface.
 
 <img width="1920" height="879" alt="image" src="https://github.com/user-attachments/assets/03a94cae-84f5-4c9b-a7e8-d2e446e6b10d" />
 
-
 ## Key Features
 
 - **Dual content sources**: Local TypeScript files as default, with optional Sanity CMS integration
@@ -224,4 +223,4 @@ This ensures the application always has content to display, even if the CMS is u
 
 ## License
 
-This project is private and intended for personal use.
+This project is licensed under the MIT License.
