@@ -15,7 +15,7 @@ export function TechBadge({ size = 'sm', tech }: TechBadgeProps) {
 
   const title = tech.title ?? icon.title ?? tech.slug;
   const hex = icon.hex ?? '000000';
-  const bgHex = tech.invertColor ? 'var(--muted)' : `#${hex}15`;
+  const bgHex = tech.invertColor ? 'var(--background)' : `#${hex}15`;
   const borderColor = tech.invertColor ? 'var(--color-gray-500)' : `#${hex}60`;
 
   return (
