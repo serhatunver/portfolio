@@ -1,4 +1,4 @@
-import type { Experience } from '@/types/content';
+import type { ExperienceType } from '@/types/content';
 import {
   Card,
   CardAction,
@@ -16,15 +16,22 @@ import { CircleCheckBig, MapPin, Calendar } from 'lucide-react';
 import { formatDuration } from '@/lib/utils/date';
 import { urlFor } from '@/lib/cms/image';
 
-export function ExperienceCard({ experience }: { experience: Experience }) {
+export function ExperienceCard({ experience }: { experience: ExperienceType }) {
   return (
     <Card className="w-full border-none shadow-none bg-transparent gap-4 py-4">
       <CardHeader className="flex items-center gap-4 px-0">
         <Avatar className="size-12 self-start border-2">
-          <AvatarImage
-            src={urlFor(experience.companyLogo).url()}
-            alt={experience.company}
-          />
+          {typeof experience.companyLogo === 'string' ? (
+            <AvatarImage
+              src={experience.companyLogo}
+              alt={experience.company}
+            />
+          ) : (
+            <AvatarImage
+              src={urlFor(experience.companyLogo).url()}
+              alt={experience.company}
+            />
+          )}
           <AvatarFallback>
             {experience.company
               .split(' ')
@@ -64,7 +71,7 @@ export function ExperienceCard({ experience }: { experience: Experience }) {
       </CardContent>
       <CardFooter className="flex flex-wrap px-0 gap-2">
         {experience.techStack.map((tech) => (
-          <TechBadge key={tech} tech={tech} />
+          <TechBadge key={tech.slug} tech={tech} />
         ))}
       </CardFooter>
     </Card>

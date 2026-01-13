@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { BlogPost } from '@/types/content';
+import { BlogPostType } from '@/types/content';
 import {
   Card,
   CardAction,
@@ -14,7 +14,7 @@ import { Button } from '@/components/animate-ui/components/buttons/button';
 import { Badge } from '@/components/ui/badge';
 import { ArrowRight, CircleCheckBig } from 'lucide-react';
 
-export function BlogPostCard({ blogPost }: { blogPost: BlogPost }) {
+export function BlogPostCard({ blogPost }: { blogPost: BlogPostType }) {
   return (
     <Card className="w-full mb-6 bg-background/50 backdrop-blur-m">
       <CardHeader>

@@ -8,6 +8,7 @@ import { experienceType } from './experienceType';
 import { techStackType } from './techStackType';
 import { blogPostType } from './blogPostType';
 import { siteSettingsType } from './siteSettingsType';
+import { iconType } from './iconType';
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
@@ -19,5 +20,6 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     techStackType,
     blogPostType,
     siteSettingsType,
+    iconType,
   ],
 };

@@ -20,9 +20,10 @@ export const techStackType = defineType({
     defineField({
       name: 'technologies',
       type: 'array',
-      of: [{ type: 'string' }],
+      of: [{ type: 'reference', to: [{ type: 'icon' }] }],
       validation: (rule) => rule.required(),
     }),
+
     orderRankField({ type: 'project', newItemPosition: 'before' }),
   ],
 });

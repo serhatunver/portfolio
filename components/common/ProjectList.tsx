@@ -1,9 +1,9 @@
 import { Section } from '@/components/layout/Section';
 import { ProjectCard } from '@/components/common/ProjectCard';
-import type { Project } from '@/types/content';
+import type { ProjectType } from '@/types/content';
 
 type ProjectsSectionProps = {
-  projects: Project[];
+  projects: ProjectType[];
   limit?: number;
   seeAllLink?: string;
 };

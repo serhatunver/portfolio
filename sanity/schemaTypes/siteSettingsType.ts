@@ -128,9 +128,9 @@ export const siteSettingsType = defineType({
                 defineField({
                   name: 'icon',
                   title: 'Icon',
-                  type: 'string',
+                  type: 'image',
                   options: {
-                    list: ['Linkedin', 'Github', 'Mail'],
+                    accept: 'image/svg+xml',
                   },
                 }),
               ],

@@ -1,4 +1,4 @@
-import type { Education } from '@/types/content';
+import type { EducationType } from '@/types/content';
 import {
   Card,
   CardAction,
@@ -15,16 +15,22 @@ import { MapPin, Calendar, GraduationCap, CircleCheckBig } from 'lucide-react';
 import { formatDuration } from '@/lib/utils/date';
 import { urlFor } from '@/lib/cms/image';
 
-export function EducationCard({ education }: { education: Education }) {
-  console.log(typeof education.institutionLogo);
+export function EducationCard({ education }: { education: EducationType }) {
   return (
     <Card className="w-full border-none shadow-none bg-transparent gap-4 py-4">
       <CardHeader className="flex items-center gap-4 px-0">
         <Avatar className="size-12 border-2">
-          <AvatarImage
-            src={urlFor(education.institutionLogo).url()}
-            alt={education.institution}
-          />
+          {typeof education.institutionLogo === 'string' ? (
+            <AvatarImage
+              src={education.institutionLogo}
+              alt={education.institution}
+            />
+          ) : (
+            <AvatarImage
+              src={urlFor(education.institutionLogo).url()}
+              alt={education.institution}
+            />
+          )}
           <AvatarFallback>
             {education.institution
               .split(' ')

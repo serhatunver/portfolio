@@ -1,18 +1,25 @@
 import type { PortableTextBlock } from 'next-sanity';
 import type { SanityImageSource } from '@sanity/image-url';
 
-export type Project = {
+export type TechType = {
+  slug: string;
+  title?: string;
+  color?: string;
+  invertColor?: boolean;
+};
+
+export type ProjectType = {
   _id: string;
   title: string;
   description?: string;
   highlights: string[];
-  techStack: string[];
+  techStack: TechType[];
   githubLink?: string;
   demoLink?: string;
   slug: string;
 };
 
-export type Education = {
+export type EducationType = {
   _id: string;
   degree: string;
   department: string;
@@ -26,7 +33,7 @@ export type Education = {
   institutionLogo: SanityImageSource;
 };
 
-export type Experience = {
+export type ExperienceType = {
   _id: string;
   company: string;
   role: string;
@@ -35,33 +42,33 @@ export type Experience = {
   endDate?: string | null;
   location: string;
   highlights: string[];
-  techStack: string[];
+  techStack: TechType[];
   companyLogo: SanityImageSource;
 };
 
-export type Category = {
+export type CategoryType = {
   title: string;
   slug?: string;
   description?: string;
 };
 
-export type BlogPost = {
+export type BlogPostType = {
   _id: string;
   title: string;
   slug: string;
   excerpt: string;
   publishedAt: string;
   tags: string[];
-  categories: Category[];
+  categories: CategoryType[];
   body: PortableTextBlock[];
 };
 
-export type TechStack = {
+export type TechStackType = {
   title: string;
-  technologies: string[];
+  technologies: TechType[];
 };
 
-export type CTA = {
+export type CTAType = {
   label: string;
   href: string;
   type?: 'default' | 'secondary' | 'outline' | 'ghost' | 'destructive' | 'link';
@@ -72,33 +79,33 @@ export type CTA = {
   analyticsId?: string;
 };
 
-export type Contact = {
+export type ContactType = {
   label: string;
   href: string;
-  icon: 'Linkedin' | 'Github' | 'Mail';
+  icon?: SanityImageSource;
 };
 
-export type Hero = {
+export type HeroType = {
   title: string;
   description: string;
-  cta: CTA[];
+  cta: CTAType[];
 };
 
-export type About = {
+export type AboutType = {
   title: string;
   content: PortableTextBlock[];
 };
 
-export type Footer = {
+export type FooterType = {
   fullName: string;
   title: string;
   message: string;
-  cta: CTA[];
-  contact: Contact[];
+  cta: CTAType[];
+  contact: ContactType[];
 };
 
-export type SiteSettings = {
-  hero: Hero;
-  about: About;
-  footer: Footer;
+export type SiteSettingsType = {
+  hero: HeroType;
+  about: AboutType;
+  footer: FooterType;
 };

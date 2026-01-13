@@ -10,8 +10,8 @@ export async function HeroSection() {
   return (
     <Section ariaLabel="Hero Section" className="mt-6">
       <TextShimmer
-        duration={2}
-        className="text-2xl font-bold tracking-tight leading-tight [--base-color:var(--color-foreground)] [--base-gradient-color:var(--muted-foreground)] dark:[--base-color:var(--color-foreground)] dark:[--base-gradient-color:var(--muted-foreground)]"
+        duration={2.5}
+        className="text-2xl font-bold tracking-tight leading-tight [--base-color:var(--color-foreground)] [--base-gradient-color:var(--color-gray-400)] dark:[--base-color:var(--color-foreground)] dark:[--base-gradient-color:var(--color-gray-500)]"
       >
         {hero.title}
       </TextShimmer>

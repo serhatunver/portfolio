@@ -36,7 +36,7 @@ export const projectType = defineType({
     defineField({
       name: 'techStack',
       type: 'array',
-      of: [defineArrayMember({ type: 'string' })],
+      of: [{ type: 'reference', to: [{ type: 'icon' }] }],
       validation: (rule) => rule.required(),
     }),
     defineField({

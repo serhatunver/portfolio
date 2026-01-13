@@ -15,9 +15,11 @@ import { TechBadge } from '@/components/common/TechBadge';
 import { Info, CircleCheckBig, ExternalLink } from 'lucide-react';
 import { SiGithub } from '@icons-pack/react-simple-icons';
 
-import type { Project } from '@/types/content';
+import type { ProjectType } from '@/types/content';
 
-export function ProjectCard({ project }: { project: Project }) {
+export function ProjectCard({ project }: { project: ProjectType }) {
+  if (!project) return null;
+
   return (
     <Card className="w-full shadow-none rounded-2xl bg-transparent gap-4">
       <CardHeader>
@@ -38,7 +40,7 @@ export function ProjectCard({ project }: { project: Project }) {
         </ul> */}
         <div className="flex flex-wrap gap-2">
           {project.techStack.map((tech) => (
-            <TechBadge key={tech} tech={tech} />
+            <TechBadge key={tech.slug} tech={tech} />
           ))}
         </div>
       </CardContent>

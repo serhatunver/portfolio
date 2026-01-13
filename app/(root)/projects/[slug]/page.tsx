@@ -67,7 +67,7 @@ export default async function ProjectDetailsPage({
             <h3 className="mb-2 text-sm font-medium">Tech Stack</h3>
             <div className="flex flex-wrap gap-2">
               {project.techStack.map((tech) => (
-                <TechBadge key={tech} tech={tech} />
+                <TechBadge key={tech.slug} tech={tech} />
               ))}
             </div>
           </div>

@@ -1,6 +1,6 @@
-import type { Project } from '@/types/content';
+import type { ProjectType } from '@/types/content';
 
-export const projects: Project[] = [
+export const projects: ProjectType[] = [
   {
     _id: '1',
     title: 'Busio',
@@ -10,13 +10,10 @@ export const projects: Project[] = [
       'The system implements advanced seat availability algorithms, dynamic pricing based on seat priority, and comprehensive reservation management.',
     ],
     techStack: [
-      'TypeScript',
-      'React',
-      'Next.js',
-      'Tailwind CSS',
-      'Node.js',
-      'Express',
-      'MongoDB',
+      {
+        slug: 'typescript',
+      },
+      { slug: 'react' },
     ],
     githubLink: 'https://github.com/serhatunver/bus-reservation',
     demoLink: '#',
@@ -28,14 +25,10 @@ export const projects: Project[] = [
     description: 'This is the second project description.',
     highlights: ['Detailed information about Project Two.'],
     techStack: [
-      'JavaScript',
-      'Vue.js',
-      'Nuxt.js',
-      'Firebase',
-      'CSS',
-      'HTML',
-      'Git',
-      'Storybook',
+      {
+        slug: 'typescript',
+      },
+      { slug: 'react' },
     ],
     githubLink: '#',
     demoLink: '#',
@@ -47,14 +40,10 @@ export const projects: Project[] = [
     description: 'This is the second project description.',
     highlights: ['Detailed information about Project Two.'],
     techStack: [
-      'JavaScript',
-      'Vue.js',
-      'Nuxt.js',
-      'Firebase',
-      'CSS',
-      'HTML',
-      'Git',
-      'Storybook',
+      {
+        slug: 'typescript',
+      },
+      { slug: 'react' },
     ],
     githubLink: '#',
     demoLink: '#',
@@ -66,14 +55,10 @@ export const projects: Project[] = [
     description: 'This is the second project description.',
     highlights: ['Detailed information about Project Two.'],
     techStack: [
-      'JavaScript',
-      'Vue.js',
-      'Nuxt.js',
-      'Firebase',
-      'CSS',
-      'HTML',
-      'Git',
-      'Storybook',
+      {
+        slug: 'typescript',
+      },
+      { slug: 'react' },
     ],
     githubLink: '#',
     demoLink: '#',
@@ -85,14 +70,10 @@ export const projects: Project[] = [
     description: 'This is the second project description.',
     highlights: ['Detailed information about Project Two.'],
     techStack: [
-      'JavaScript',
-      'Vue.js',
-      'Nuxt.js',
-      'Firebase',
-      'CSS',
-      'HTML',
-      'Git',
-      'Storybook',
+      {
+        slug: 'typescript',
+      },
+      { slug: 'react' },
     ],
     githubLink: '#',
     demoLink: '#',

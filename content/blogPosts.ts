@@ -1,7 +1,7 @@
-import type { BlogPost } from '@/types/content';
+import type { BlogPostType } from '@/types/content';
 import { convertStringToPortableText } from '@/lib/utils/portableText';
 
-export const blogPosts: BlogPost[] = [
+export const blogPosts: BlogPostType[] = [
   {
     _id: '1',
     title: 'Post 1',

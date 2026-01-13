@@ -1,6 +1,6 @@
-import type { Education } from '@/types/content';
+import type { EducationType } from '@/types/content';
 
-export const education: Education[] = [
+export const education: EducationType[] = [
   {
     _id: '1',
     institution: 'Cukurova University',

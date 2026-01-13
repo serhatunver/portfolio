@@ -1,26 +1,31 @@
-import type { TechStack } from '@/types/content';
+import type { TechStackType } from '@/types/content';
 
-export const techStack: TechStack[] = [
+export const techStack: TechStackType[] = [
   {
     title: 'Frontend',
     technologies: [
-      'TypeScript',
-      'React',
-      'Next.js',
-      'Tailwind CSS',
-      'Vue.js',
-      'Nuxt.js',
-      'JavaScript',
-      'CSS',
-      'HTML',
-      'Storybook',
-      'Python',
-      'Cheerio',
+      {
+        slug: 'typescript',
+      },
+      { slug: 'react' },
     ],
   },
   {
     title: 'Backend',
-    technologies: ['NodeJS', 'Express', 'MongoDB', 'PostgreSQL', 'Mongoose'],
+    technologies: [
+      {
+        slug: 'nodedotjs',
+      },
+      { slug: 'express', invertColor: true },
+    ],
   },
-  { title: 'Tools', technologies: ['Git', 'Docker'] },
+  {
+    title: 'Tools',
+    technologies: [
+      {
+        slug: 'git',
+      },
+      { slug: 'docker' },
+    ],
+  },
 ];

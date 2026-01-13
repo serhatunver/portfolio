@@ -1,16 +1,16 @@
 import { client } from './client';
 import type {
-  Project,
-  Education,
-  Experience,
-  TechStack,
-  BlogPost,
-  Hero,
-  About,
-  Footer,
+  ProjectType,
+  EducationType,
+  ExperienceType,
+  TechStackType,
+  BlogPostType,
+  HeroType,
+  AboutType,
+  FooterType,
 } from '@/types/content';
 
-export async function fetchProjectsFromCMS(): Promise<Project[]> {
+export async function fetchProjectsFromCMS(): Promise<ProjectType[]> {
   return client.fetch(`
     *[_type == "project"] | order(orderRank) {
       _id,
@@ -18,14 +18,19 @@ export async function fetchProjectsFromCMS(): Promise<Project[]> {
       "slug": slug.current,
       description,
       highlights,
-      techStack,
+      techStack[]->{
+        "slug": slug.current,
+        title,
+        color,
+        invertColor
+      },
       githubLink,
       demoLink
     }
   `);
 }
 
-export async function fetchEducationFromCMS(): Promise<Education[]> {
+export async function fetchEducationFromCMS(): Promise<EducationType[]> {
   return client.fetch(`
     *[_type == "education"] | order(orderRank) {
       _id,
@@ -42,7 +47,7 @@ export async function fetchEducationFromCMS(): Promise<Education[]> {
   `);
 }
 
-export async function fetchExperienceFromCMS(): Promise<Experience[]> {
+export async function fetchExperienceFromCMS(): Promise<ExperienceType[]> {
   return client.fetch(`
     *[_type == "experience"] | order(orderRank) {
       _id,
@@ -53,22 +58,32 @@ export async function fetchExperienceFromCMS(): Promise<Experience[]> {
       endDate,
       location,
       highlights,
-      techStack,
+      techStack[]->{
+        "slug": slug.current,
+        title,
+        color,
+        invertColor
+      },
       companyLogo
     }
   `);
 }
 
-export async function fetchTechStackFromCMS(): Promise<TechStack[]> {
+export async function fetchTechStackFromCMS(): Promise<TechStackType[]> {
   return client.fetch(`
     *[_type == "techStack"] | order(orderRank) {
       title,
-      technologies
+      technologies[]->{
+        "slug": slug.current,
+        title,
+        color,
+        invertColor
+      },
     }
   `);
 }
 
-export async function fetchBlogPostsFromCMS(): Promise<BlogPost[]> {
+export async function fetchBlogPostsFromCMS(): Promise<BlogPostType[]> {
   return client.fetch(
     `*[_type == "blogPost"]{
       _id,
@@ -83,21 +98,21 @@ export async function fetchBlogPostsFromCMS(): Promise<BlogPost[]> {
 }
 
 // Hero (home page)
-export async function fetchHeroFromCMS(): Promise<Hero> {
+export async function fetchHeroFromCMS(): Promise<HeroType> {
   return client.fetch(`
     *[_type == "siteSettings"][0].hero
   `);
 }
 
 // About (about page)
-export async function fetchAboutFromCMS(): Promise<About> {
+export async function fetchAboutFromCMS(): Promise<AboutType> {
   return client.fetch(`
     *[_type == "siteSettings"][0].about
   `);
 }
 
 // Footer (global, layout)
-export async function fetchFooterFromCMS(): Promise<Footer> {
+export async function fetchFooterFromCMS(): Promise<FooterType> {
   return client.fetch(`
     *[_type == "siteSettings"][0].footer
   `);
