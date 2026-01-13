@@ -12,6 +12,8 @@ export async function ProjectsSection({
   seeAllLink,
 }: ProjectsSectionProps) {
   const projects = await getProjects();
+  if (!projects) return null;
+
   return (
     <Section
       title="Projects"

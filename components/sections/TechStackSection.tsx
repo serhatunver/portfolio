@@ -12,7 +12,7 @@ export async function TechStackSection() {
     >
       <div className="flex flex-col gap-6 py-4">
         {techStack.map((stack) => (
-          <TechStack key={stack.title} stack={stack} />
+          <TechStack key={stack.title} techStack={stack} />
         ))}
       </div>
     </Section>

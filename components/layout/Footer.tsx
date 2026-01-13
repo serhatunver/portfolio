@@ -1,9 +1,10 @@
 import Link from 'next/link';
-import type { Footer } from '@/types/content';
-import { ICONS } from '@/components/icons/registry';
+import type { FooterType } from '@/types/content';
 import { cn } from '@/lib/utils';
+import { urlFor } from '@/lib/cms/image';
+import Image from 'next/image';
 
-export async function Footer({ footer }: { footer: Footer }) {
+export async function Footer({ footer }: { footer: FooterType }) {
   return (
     <footer className="w-full flex flex-col space-y-6 mx-auto max-w-xl bg-background px-4 py-6 text-sm text-muted-foreground backdrop-blur-sm">
       <section>
@@ -28,10 +29,6 @@ export async function Footer({ footer }: { footer: Footer }) {
       </section>
       <section className="flex flex-wrap items-center gap-2">
         {footer.contact.map((item) => {
-          const data = ICONS[item.icon as keyof typeof ICONS];
-          if (!data) return null;
-
-          const { Icon, hex, darkInvert } = data;
           return (
             <Link
               key={item.label}
@@ -40,12 +37,15 @@ export async function Footer({ footer }: { footer: Footer }) {
               rel="noopener noreferrer"
               className="flex items-center gap-1 hover:text-foreground transition-colors"
             >
-              {/* <Icon className="size-3.5" /> */}
-              <Icon
-                className={cn('w-3 h-3', darkInvert && 'dark:invert')}
-                style={hex ? { color: hex } : undefined}
-              />
-
+              {item.icon ? (
+                <Image
+                  src={urlFor(item.icon).url()}
+                  alt=""
+                  width={12}
+                  height={12}
+                  className="size-3 dark:invert"
+                />
+              ) : null}
               <span>{item.label}</span>
               <span className="text-muted-foreground/60">/</span>
             </Link>

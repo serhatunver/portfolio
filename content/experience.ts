@@ -1,6 +1,6 @@
-import type { Experience } from '@/types/content';
+import type { ExperienceType } from '@/types/content';
 
-export const experience: Experience[] = [
+export const experience: ExperienceType[] = [
   {
     _id: '1',
     company: 'Crafton',
@@ -16,12 +16,10 @@ export const experience: Experience[] = [
       'Maintained code quality via Storybook, linting, formatting',
     ],
     techStack: [
-      'TypeScript',
-      'Next.js',
-      'React',
-      'Tailwind CSS',
-      'Storybook',
-      'Git',
+      {
+        slug: 'typescript',
+      },
+      { slug: 'react' },
     ],
     companyLogo:
       'https://media.licdn.com/dms/image/v2/C560BAQGjO48DKiiTxg/company-logo_200_200/company-logo_200_200/0/1630592564368/crafton_logo?e=2147483647&v=beta&t=KFco4Dwps0jlNpKdKd8T94Cwp-VCczEDam0eeZkyFwU',
@@ -37,7 +35,12 @@ export const experience: Experience[] = [
     highlights: [
       'Developed user-friendly web interfaces using Vue.js and Nuxt.',
     ],
-    techStack: ['JavaScript', 'Nuxt', 'Vue.js', 'Tailwind CSS', 'Git'],
+    techStack: [
+      {
+        slug: 'javascript',
+      },
+      { slug: 'vuedotjs' },
+    ],
     companyLogo:
       'https://media.licdn.com/dms/image/v2/C4E0BAQEJoAsaLO3LhA/company-logo_200_200/company-logo_200_200/0/1655234886153/equota_logo?e=2147483647&v=beta&t=ygyZjSMULM1aY6Nk9nhoaEjy3K48NZxNPjrL4PjZudM',
   },

@@ -1,12 +1,12 @@
 import type {
-  Project,
-  Education,
-  Experience,
-  TechStack,
-  BlogPost,
-  Hero,
-  About,
-  Footer,
+  ProjectType,
+  EducationType,
+  ExperienceType,
+  TechStackType,
+  BlogPostType,
+  HeroType,
+  AboutType,
+  FooterType,
 } from '@/types/content';
 
 import { projects } from '@/content/projects';
@@ -55,34 +55,34 @@ async function withFallback<T>(
   }
 }
 
-export function getProjects(): Promise<Project[]> {
+export function getProjects(): Promise<ProjectType[]> {
   return withFallback(fetchProjectsFromCMS, projects);
 }
 
-export function getEducation(): Promise<Education[]> {
+export function getEducation(): Promise<EducationType[]> {
   return withFallback(fetchEducationFromCMS, education);
 }
 
-export function getExperience(): Promise<Experience[]> {
+export function getExperience(): Promise<ExperienceType[]> {
   return withFallback(fetchExperienceFromCMS, experience);
 }
 
-export function getTechStack(): Promise<TechStack[]> {
+export function getTechStack(): Promise<TechStackType[]> {
   return withFallback(fetchTechStackFromCMS, techStack);
 }
 
-export function getBlogPosts(): Promise<BlogPost[]> {
+export function getBlogPosts(): Promise<BlogPostType[]> {
   return withFallback(fetchBlogPostsFromCMS, blogPosts);
 }
 
-export function getHero(): Promise<Hero> {
+export function getHero(): Promise<HeroType> {
   return withFallback(fetchHeroFromCMS, siteSettings.hero);
 }
 
-export function getAbout(): Promise<About> {
+export function getAbout(): Promise<AboutType> {
   return withFallback(fetchAboutFromCMS, siteSettings.about);
 }
 
-export function getFooter(): Promise<Footer> {
+export function getFooter(): Promise<FooterType> {
   return withFallback(fetchFooterFromCMS, siteSettings.footer);
 }

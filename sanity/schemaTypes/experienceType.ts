@@ -67,9 +67,10 @@ export const experienceType = defineType({
     defineField({
       name: 'techStack',
       type: 'array',
-      of: [{ type: 'string' }],
+      of: [{ type: 'reference', to: [{ type: 'icon' }] }],
       validation: (rule) => rule.required(),
     }),
+
     orderRankField({ type: 'project', newItemPosition: 'before' }),
   ],
 });

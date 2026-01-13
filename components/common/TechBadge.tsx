@@ -1,33 +1,40 @@
 import { Badge } from '@/components/ui/badge';
-import { ICONS } from '@/components/icons/registry';
+import { Icon } from '@/components/common/Icon';
 import { cn } from '@/lib/utils';
+import { getIconBySlug } from '@/lib/getIcon';
 
-export function TechBadge({ tech }: { tech: string }) {
-  const data = ICONS[tech as keyof typeof ICONS];
-  if (!data) return null;
+import type { TechType } from '@/types/content';
 
-  const { Icon, hex, darkInvert } = data;
+interface TechBadgeProps {
+  size?: 'sm' | 'md' | 'lg';
+  tech: TechType;
+}
+
+export function TechBadge({ size = 'sm', tech }: TechBadgeProps) {
+  const icon = getIconBySlug(tech.slug);
+
+  const title = tech.title ?? icon.title ?? tech.slug;
+  const hex = icon.hex ?? '000000';
+  const bgHex = tech.invertColor ? 'var(--muted)' : `#${hex}15`;
+  const borderColor = tech.invertColor ? 'var(--color-gray-500)' : `#${hex}60`;
 
   return (
     <Badge
-      key={tech}
       variant="outline"
+      size={size}
       className={cn(
-        'flex items-center h-6 brightness-100 dark:brightness-120',
+        'flex items-center brightness-100 dark:brightness-120',
         'hover:cursor-pointer hover:scale-110',
         'odd:hover:rotate-3 even:hover:-rotate-3',
         'transition-all duration-300',
       )}
       style={{
-        backgroundColor: hex ? `${hex}15` : undefined,
-        borderColor: hex ? `${darkInvert ? '#666666' : hex}60` : undefined,
+        backgroundColor: bgHex,
+        borderColor: borderColor,
       }}
     >
-      <Icon
-        className={cn('w-3 h-3', darkInvert && 'dark:invert')}
-        style={hex ? { color: hex } : undefined}
-      />
-      <span className="ml-0.5 text-black dark:text-white">{tech}</span>
+      <Icon icon={icon} color={tech.invertColor ? 'var(--foreground)' : null} />
+      <span>{title}</span>
     </Badge>
   );
 }

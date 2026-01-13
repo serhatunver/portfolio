@@ -1,7 +1,7 @@
-import type { SiteSettings } from '@/types/content';
+import type { SiteSettingsType } from '@/types/content';
 import { convertStringToPortableText } from '@/lib/utils/portableText';
 
-export const siteSettings: SiteSettings = {
+export const siteSettings: SiteSettingsType = {
   hero: {
     title: 'Software Engineer',
     description:
@@ -51,17 +51,14 @@ export const siteSettings: SiteSettings = {
       {
         label: 'linkedin',
         href: 'www.linkedin.com',
-        icon: 'Linkedin',
       },
       {
         label: 'github',
         href: 'www.github.com',
-        icon: 'Github',
       },
       {
         label: 'mail',
         href: 'www.gmail.com',
-        icon: 'Mail',
       },
     ],
   },
