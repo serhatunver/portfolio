@@ -1,19 +1,33 @@
-import Link from 'next/link';
 import type { FooterType } from '@/types/content';
-import { cn } from '@/lib/utils';
-import { urlFor } from '@/lib/cms/image';
+import Link from 'next/link';
 import Image from 'next/image';
+import { Section } from '@/components/layout/Section';
+import { MailLink } from '@/components/common/MailLink';
+import { urlFor } from '@/lib/cms/image';
+
+const BUILT_WITH_LINKS: { label: string; href: string }[] = [
+  { label: 'Next.js', href: 'https://nextjs.org/' },
+  { label: 'shadcn/ui', href: 'https://ui.shadcn.com/' },
+  { label: 'Tailwind CSS', href: 'https://tailwindcss.com/' },
+  { label: 'Sanity', href: 'https://www.sanity.io/' },
+];
 
 export async function Footer({ footer }: { footer: FooterType }) {
   return (
-    <footer className="w-full flex flex-col space-y-6 mx-auto max-w-xl bg-background px-4 py-6 text-sm text-muted-foreground backdrop-blur-sm">
+    <Section
+      as="footer"
+      aria-label="Site footer"
+      className="flex flex-col space-y-6 px-4 max-w-xl text-sm text-muted-foreground"
+    >
       <section>
         <div className="font-medium text-lg text-foreground">
           {footer.fullName}
         </div>
         <div>{footer.title}</div>
       </section>
+
       <section className="text-base">{footer.message}</section>
+
       <section>
         <nav className="flex flex-col sm:flex-row gap-3 mb-4">
           {footer.cta.map((item) => (
@@ -27,72 +41,64 @@ export async function Footer({ footer }: { footer: FooterType }) {
           ))}
         </nav>
       </section>
+
       <section className="flex flex-wrap items-center gap-2">
-        {footer.contact.map((item) => {
+        {footer.contact.map((item, index) => {
+          const isLast = index === footer.contact.length - 1;
           return (
-            <Link
-              key={item.label}
-              href={item.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-1 hover:text-foreground transition-colors"
-            >
-              {item.icon ? (
-                <Image
-                  src={urlFor(item.icon).url()}
-                  alt=""
-                  width={12}
-                  height={12}
-                  className="size-3 dark:invert"
-                />
-              ) : null}
-              <span>{item.label}</span>
-              <span className="text-muted-foreground/60">/</span>
-            </Link>
+            <span key={item.label} className="flex gap-2">
+              {item.href.startsWith('mailto:') ? (
+                <MailLink item={item} />
+              ) : (
+                <Link
+                  href={item.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-1 hover:text-foreground transition-colors"
+                >
+                  {item.icon && (
+                    <Image
+                      src={urlFor(item.icon).url()}
+                      alt=""
+                      width={12}
+                      height={12}
+                      className="size-3 dark:invert"
+                    />
+                  )}
+                  <span>{item.label}</span>
+                </Link>
+              )}
+              {!isLast && <span>{'/'}</span>}
+            </span>
           );
         })}
       </section>
-      <section>
-        <a
-          href="https://nextjs.org/"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="underline hover:text-foreground"
-        >
-          Next.js
-        </a>
-        ,{' '}
-        <a
-          href="https://ui.shadcn.com/"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="underline hover:text-foreground"
-        >
-          shadcn/ui
-        </a>
-        ,{' '}
-        <a
-          href="https://tailwindcss.com/"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="underline hover:text-foreground"
-        >
-          Tailwind CSS
-        </a>
-        , and{' '}
-        <a
-          href="https://www.sanity.io/"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="underline hover:text-foreground"
-        >
-          Sanity
-        </a>
-        .
+
+      <section aria-label="Built with technologies">
+        Built with{' '}
+        {BUILT_WITH_LINKS.map((tech, index) => {
+          const isLast = index === BUILT_WITH_LINKS.length - 1;
+          const isSecondLast = index === BUILT_WITH_LINKS.length - 2;
+
+          return (
+            <span key={tech.label}>
+              <a
+                href={tech.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline hover:text-foreground"
+              >
+                {tech.label}
+              </a>
+              {!isLast && <>{isSecondLast ? ' and ' : ', '}</>}
+            </span>
+          );
+        })}
       </section>
+
       <section className="text-base">
-        © {new Date().getFullYear()} Serhat Ünver. All rights reserved.
+        MIT Licensed © {new Date().getFullYear()} Serhat Ünver
       </section>
-    </footer>
+    </Section>
   );
 }
