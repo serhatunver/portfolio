@@ -4,7 +4,8 @@ import { ChevronsRight, ArrowRight } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import * as React from 'react';
 
-type SectionProps = {
+type SectionProps<T extends React.ElementType = 'section'> = {
+  as?: T;
   title?: string;
   description?: string;
   seeAllLink?: string;
@@ -13,9 +14,10 @@ type SectionProps = {
   stickyTitle?: boolean;
   className?: string;
   children: React.ReactNode;
-};
+} & React.ComponentPropsWithoutRef<T>;
 
-export function Section({
+export function Section<T extends React.ElementType = 'section'>({
+  as,
   title,
   description,
   seeAllLink,
@@ -24,13 +26,20 @@ export function Section({
   stickyTitle = true,
   className,
   children,
-}: SectionProps) {
+  ...props
+}: SectionProps<T>) {
+  const Component = as || 'section';
   const hasHeader = title || description || seeAllLink;
 
   return (
-    <section
-      className={cn(paddingNone ? 'py-0' : 'py-4 sm:py-6 md:py-8', className)}
+    <Component
+      className={cn(
+        paddingNone ? 'py-0' : 'py-4 sm:py-6 md:py-8',
+        'w-full mx-auto',
+        className,
+      )}
       aria-label={ariaLabel ?? title}
+      {...props}
     >
       {hasHeader && (
         <header
@@ -70,7 +79,7 @@ export function Section({
       )}
 
       {children}
-    </section>
+    </Component>
   );
 }
 
