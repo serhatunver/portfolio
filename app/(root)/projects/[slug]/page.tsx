@@ -1,13 +1,12 @@
-import { notFound } from 'next/navigation';
-import Link from 'next/link';
-
-import { getProjects } from '@/lib/cms';
-import { Section } from '@/components/layout/Section';
-import { TechBadge } from '@/components/common/TechBadge';
-import { Button } from '@/components/animate-ui/components/buttons/button';
-
-import { ArrowLeft, ExternalLink, CircleCheckBig } from 'lucide-react';
 import { SiGithub } from '@icons-pack/react-simple-icons';
+import { ArrowLeft, CircleCheckBig, ExternalLink } from 'lucide-react';
+import Link from 'next/link';
+import { notFound } from 'next/navigation';
+
+import { Button } from '@/components/animate-ui/components/buttons/button';
+import { TechBadge } from '@/components/common/TechBadge';
+import { Section } from '@/components/layout/Section';
+import { getProjects } from '@/lib/cms';
 
 type ProjectDetailsPageProps = {
   params: Promise<{
@@ -15,9 +14,7 @@ type ProjectDetailsPageProps = {
   }>;
 };
 
-export default async function ProjectDetailsPage({
-  params,
-}: ProjectDetailsPageProps) {
+export default async function ProjectDetailsPage({ params }: ProjectDetailsPageProps) {
   const projects = await getProjects();
   const { slug } = await params;
 
@@ -31,12 +28,7 @@ export default async function ProjectDetailsPage({
     <Section ariaLabel={`${project.title} details page`}>
       {/* Back link */}
       <div className="mb-6">
-        <Button
-          asChild
-          variant="link"
-          size="sm"
-          className="has-[>svg]:px-0 px-0"
-        >
+        <Button asChild variant="link" size="sm" className="px-0 has-[>svg]:px-0">
           <Link href="/projects">
             <ArrowLeft className="size-4" />
             Back to projects
@@ -52,10 +44,7 @@ export default async function ProjectDetailsPage({
             <ul className="space-y-1">
               {project.highlights.map((highlight, idx) => (
                 <li key={idx}>
-                  <CircleCheckBig
-                    className="inline mr-2 mb-1 text-muted-foreground"
-                    size={14}
-                  />
+                  <CircleCheckBig className="text-muted-foreground mr-2 mb-1 inline" size={14} />
                   {highlight}
                 </li>
               ))}
@@ -77,11 +66,7 @@ export default async function ProjectDetailsPage({
             <div className="flex gap-2 pt-4">
               {project.githubLink && (
                 <Button asChild variant="outline" size="sm">
-                  <Link
-                    href={project.githubLink}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
+                  <Link href={project.githubLink} target="_blank" rel="noopener noreferrer">
                     <SiGithub className="size-4" />
                     GitHub
                   </Link>
@@ -90,11 +75,7 @@ export default async function ProjectDetailsPage({
 
               {project.demoLink && (
                 <Button asChild variant="outline" size="sm">
-                  <Link
-                    href={project.demoLink}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
+                  <Link href={project.demoLink} target="_blank" rel="noopener noreferrer">
                     <ExternalLink className="size-4" />
                     Live Demo
                   </Link>

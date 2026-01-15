@@ -1,6 +1,7 @@
 import Link from 'next/link';
-import { Section } from '@/components/layout/Section';
+
 import { Button } from '@/components/animate-ui/components/buttons/button';
+import { Section } from '@/components/layout/Section';
 import { TextShimmer } from '@/components/ui/text-shimmer';
 import { getHero } from '@/lib/cms';
 
@@ -11,12 +12,16 @@ export async function HeroSection() {
     <Section ariaLabel="Hero Section" className="mt-6">
       <TextShimmer
         duration={2.5}
-        className="text-2xl font-bold tracking-tight leading-tight [--base-color:var(--color-foreground)] [--base-gradient-color:var(--color-gray-400)] dark:[--base-color:var(--color-foreground)] dark:[--base-gradient-color:var(--color-gray-500)]"
+        className="
+          text-2xl/tight font-bold tracking-tight [--base-color:var(--color-foreground)]
+          [--base-gradient-color:var(--color-gray-400)]
+          dark:[--base-color:var(--color-foreground)] dark:[--base-gradient-color:var(--color-gray-500)]
+        "
       >
         {hero.title}
       </TextShimmer>
 
-      <p className="mt-4 max-w-xl text-muted-foreground">{hero.description}</p>
+      <p className="text-muted-foreground mt-4 max-w-xl">{hero.description}</p>
 
       <div className="mt-6 flex gap-3">
         {hero.cta.map((item) => (

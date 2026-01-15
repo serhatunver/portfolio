@@ -1,6 +1,6 @@
 // sanity/schemaTypes/iconType.ts
-import { defineField, defineType } from 'sanity';
 import { Code } from 'lucide-react';
+import { defineField, defineType } from 'sanity';
 
 export const iconType = defineType({
   name: 'icon',
@@ -17,21 +17,18 @@ export const iconType = defineType({
     defineField({
       name: 'title',
       type: 'string',
-      description:
-        'Display name (optional). If empty, Simple Icons title will be used.',
+      description: 'Display name (optional). If empty, Simple Icons title will be used.',
     }),
     defineField({
       name: 'color',
       type: 'string',
-      description:
-        'Brand hex color without "#", e.g. "3178C6". Used for icon and badge styling.',
+      description: 'Brand hex color without "#", e.g. "3178C6". Used for icon and badge styling.',
     }),
     defineField({
       name: 'invertColor',
       type: 'boolean',
       initialValue: false,
-      description:
-        'Enable if the icon color needs inversion for dark/light mode contrast (e.g. black or white logos).',
+      description: 'Enable if the icon color needs inversion for dark/light mode contrast (e.g. black or white logos).',
     }),
   ],
   preview: {

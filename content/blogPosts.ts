@@ -1,5 +1,5 @@
-import type { BlogPostType } from '@/types/content';
 import { convertStringToPortableText } from '@/lib/utils/portableText';
+import type { BlogPostType } from '@/types/content';
 
 export const blogPosts: BlogPostType[] = [
   {

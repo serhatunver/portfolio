@@ -1,5 +1,8 @@
+import { ArrowRight, CircleCheckBig } from 'lucide-react';
 import Link from 'next/link';
-import { BlogPostType } from '@/types/content';
+
+import { Button } from '@/components/animate-ui/components/buttons/button';
+import { Badge } from '@/components/ui/badge';
 import {
   Card,
   CardAction,
@@ -9,14 +12,11 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
-import { Button } from '@/components/animate-ui/components/buttons/button';
-
-import { Badge } from '@/components/ui/badge';
-import { ArrowRight, CircleCheckBig } from 'lucide-react';
+import { BlogPostType } from '@/types/content';
 
 export function BlogPostCard({ blogPost }: { blogPost: BlogPostType }) {
   return (
-    <Card className="w-full mb-6 bg-background/50 backdrop-blur-m">
+    <Card className="bg-background/50 backdrop-blur-m mb-6 w-full">
       <CardHeader>
         <CardTitle className="text-lg">{blogPost.title}</CardTitle>
         <CardDescription>{blogPost.excerpt}</CardDescription>
@@ -24,11 +24,7 @@ export function BlogPostCard({ blogPost }: { blogPost: BlogPostType }) {
       <CardContent className="space-y-4">
         <div>
           {blogPost.tags.map((tag) => (
-            <Badge
-              key={tag}
-              variant="outline"
-              className="bg-purple-800 text-white mr-2 mb-2"
-            >
+            <Badge key={tag} variant="outline" className="mr-2 mb-2 bg-purple-800 text-white">
               <CircleCheckBig />
               {tag}
             </Badge>

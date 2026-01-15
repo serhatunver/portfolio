@@ -32,14 +32,7 @@ export const siteSettingsType = defineType({
                   title: 'Button Type',
                   type: 'string',
                   options: {
-                    list: [
-                      'default',
-                      'secondary',
-                      'outline',
-                      'ghost',
-                      'destructive',
-                      'link',
-                    ],
+                    list: ['default', 'secondary', 'outline', 'ghost', 'destructive', 'link'],
                   },
                 }),
                 defineField({ name: 'icon', title: 'Icon', type: 'string' }),
@@ -95,14 +88,7 @@ export const siteSettingsType = defineType({
                   title: 'Button Type',
                   type: 'string',
                   options: {
-                    list: [
-                      'default',
-                      'secondary',
-                      'outline',
-                      'ghost',
-                      'destructive',
-                      'link',
-                    ],
+                    list: ['default', 'secondary', 'outline', 'ghost', 'destructive', 'link'],
                   },
                 }),
                 defineField({ name: 'icon', title: 'Icon', type: 'string' }),

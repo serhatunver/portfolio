@@ -6,9 +6,7 @@ export default function Blog() {
     <>
       <Section ariaLabel="Blog Section">
         <h1 className="text-2xl font-bold">Blog</h1>
-        <p className="mt-2 text-muted-foreground">
-          Welcome to my blog! Here are my latest posts.
-        </p>
+        <p className="text-muted-foreground mt-2">Welcome to my blog! Here are my latest posts.</p>
       </Section>
       <BlogPostsSection />
     </>

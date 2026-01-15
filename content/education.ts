@@ -14,8 +14,7 @@ export const education: EducationType[] = [
       'Focused on core computer engineering topics including software development, algorithms, and computer systems, with a strong emphasis on practical projects.',
     ],
     gpa: '3.22 / 4.0',
-    institutionLogo:
-      'https://upload.wikimedia.org/wikipedia/commons/b/b8/%C3%87ukurova_University_logo.svg',
+    institutionLogo: 'https://upload.wikimedia.org/wikipedia/commons/b/b8/%C3%87ukurova_University_logo.svg',
   },
   {
     _id: '2',

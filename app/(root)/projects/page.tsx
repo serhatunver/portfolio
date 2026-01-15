@@ -9,9 +9,7 @@ export default async function Projects() {
     <Section ariaLabel="Projects Section">
       <div className="mb-8">
         <h1 className="text-2xl font-bold">Projects</h1>
-        <p className="mt-2 text-muted-foreground">
-          Here are some of my projects.
-        </p>
+        <p className="text-muted-foreground mt-2">Here are some of my projects.</p>
       </div>
       <ProjectList projects={projects} />
     </Section>

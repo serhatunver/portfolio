@@ -1,38 +1,34 @@
-import type {
-  ProjectType,
-  EducationType,
-  ExperienceType,
-  TechStackType,
-  BlogPostType,
-  HeroType,
-  AboutType,
-  FooterType,
-} from '@/types/content';
-
-import { projects } from '@/content/projects';
+import { blogPosts } from '@/content/blogPosts';
 import { education } from '@/content/education';
 import { experience } from '@/content/experience';
-import { techStack } from '@/content/tech-stack';
-import { blogPosts } from '@/content/blogPosts';
+import { projects } from '@/content/projects';
 import { siteSettings } from '@/content/siteSettings';
+import { techStack } from '@/content/tech-stack';
+import type {
+  AboutType,
+  BlogPostType,
+  EducationType,
+  ExperienceType,
+  FooterType,
+  HeroType,
+  ProjectType,
+  TechStackType,
+} from '@/types/content';
 
 import {
-  fetchProjectsFromCMS,
+  fetchAboutFromCMS,
+  fetchBlogPostsFromCMS,
   fetchEducationFromCMS,
   fetchExperienceFromCMS,
-  fetchTechStackFromCMS,
-  fetchBlogPostsFromCMS,
-  fetchHeroFromCMS,
-  fetchAboutFromCMS,
   fetchFooterFromCMS,
+  fetchHeroFromCMS,
+  fetchProjectsFromCMS,
+  fetchTechStackFromCMS,
 } from './fetch';
 
 const useCMS = process.env.USE_CMS === 'true';
 
-async function withFallback<T>(
-  cmsFetcher: () => Promise<T>,
-  localData: T,
-): Promise<T> {
+async function withFallback<T>(cmsFetcher: () => Promise<T>, localData: T): Promise<T> {
   if (!useCMS) return localData;
 
   try {

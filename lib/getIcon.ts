@@ -1,6 +1,6 @@
 // lib/getIcon.ts
-import * as icons from 'simple-icons';
 import type { SimpleIcon } from 'simple-icons';
+import * as icons from 'simple-icons';
 import { siSimpleicons } from 'simple-icons';
 
 /**

@@ -1,9 +1,6 @@
+import { orderRankField, orderRankOrdering } from '@sanity/orderable-document-list';
 import { GraduationCap } from 'lucide-react';
 import { defineArrayMember, defineField, defineType } from 'sanity';
-import {
-  orderRankField,
-  orderRankOrdering,
-} from '@sanity/orderable-document-list';
 
 export const educationType = defineType({
   name: 'education',

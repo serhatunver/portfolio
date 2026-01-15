@@ -1,5 +1,5 @@
-import type { PortableTextBlock } from 'next-sanity';
 import type { SanityImageSource } from '@sanity/image-url';
+import type { PortableTextBlock } from 'next-sanity';
 
 export type TechType = {
   slug: string;

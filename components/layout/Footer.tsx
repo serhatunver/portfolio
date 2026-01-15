@@ -1,9 +1,10 @@
-import type { FooterType } from '@/types/content';
-import Link from 'next/link';
 import Image from 'next/image';
-import { Section } from '@/components/layout/Section';
+import Link from 'next/link';
+
 import { MailLink } from '@/components/common/MailLink';
+import { Section } from '@/components/layout/Section';
 import { urlFor } from '@/lib/cms/image';
+import type { FooterType } from '@/types/content';
 
 const BUILT_WITH_LINKS: { label: string; href: string }[] = [
   { label: 'Next.js', href: 'https://nextjs.org/' },
@@ -17,25 +18,19 @@ export async function Footer({ footer }: { footer: FooterType }) {
     <Section
       as="footer"
       aria-label="Site footer"
-      className="flex flex-col space-y-6 px-4 max-w-xl text-sm text-muted-foreground"
+      className="text-muted-foreground flex max-w-xl flex-col space-y-6 px-4 text-sm"
     >
       <section>
-        <div className="font-medium text-lg text-foreground">
-          {footer.fullName}
-        </div>
+        <div className="text-foreground text-lg font-medium">{footer.fullName}</div>
         <div>{footer.title}</div>
       </section>
 
       <section className="text-base">{footer.message}</section>
 
       <section>
-        <nav className="flex flex-col sm:flex-row gap-3 mb-4">
+        <nav className="mb-4 flex flex-col gap-3 sm:flex-row">
           {footer.cta.map((item) => (
-            <Link
-              key={item.label}
-              href={item.href}
-              className="hover:text-foreground transition-colors"
-            >
+            <Link key={item.label} href={item.href} className="hover:text-foreground transition-colors">
               {item.label}
             </Link>
           ))}
@@ -54,16 +49,10 @@ export async function Footer({ footer }: { footer: FooterType }) {
                   href={item.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-1 hover:text-foreground transition-colors"
+                  className="hover:text-foreground flex items-center gap-1 transition-colors"
                 >
                   {item.icon && (
-                    <Image
-                      src={urlFor(item.icon).url()}
-                      alt=""
-                      width={12}
-                      height={12}
-                      className="size-3 dark:invert"
-                    />
+                    <Image src={urlFor(item.icon).url()} alt="" width={12} height={12} className="size-3 dark:invert" />
                   )}
                   <span>{item.label}</span>
                 </Link>
@@ -82,12 +71,7 @@ export async function Footer({ footer }: { footer: FooterType }) {
 
           return (
             <span key={tech.label}>
-              <a
-                href={tech.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="underline hover:text-foreground"
-              >
+              <a href={tech.href} target="_blank" rel="noopener noreferrer" className="hover:text-foreground underline">
                 {tech.label}
               </a>
               {!isLast && <>{isSecondLast ? ' and ' : ', '}</>}
@@ -96,9 +80,7 @@ export async function Footer({ footer }: { footer: FooterType }) {
         })}
       </section>
 
-      <section className="text-base">
-        MIT Licensed © {new Date().getFullYear()} Serhat Ünver
-      </section>
+      <section className="text-base">MIT Licensed © {new Date().getFullYear()} Serhat Ünver</section>
     </Section>
   );
 }
