@@ -13,7 +13,7 @@ const BUILT_WITH_LINKS: { label: string; href: string }[] = [
   { label: 'Sanity', href: 'https://www.sanity.io/' },
 ];
 
-export async function Footer({ footer }: { footer: FooterType }) {
+export async function Footer({ data }: { data: FooterType }) {
   return (
     <Section
       as="footer"
@@ -21,15 +21,15 @@ export async function Footer({ footer }: { footer: FooterType }) {
       className="text-muted-foreground flex max-w-xl flex-col space-y-6 px-4 text-sm"
     >
       <section>
-        <div className="text-foreground text-lg font-medium">{footer.fullName}</div>
-        <div>{footer.title}</div>
+        <div className="text-foreground text-lg font-medium">{data.fullName}</div>
+        <div>{data.title}</div>
       </section>
 
-      <section className="text-base">{footer.message}</section>
+      <section className="text-base">{data.message}</section>
 
       <section>
         <nav className="mb-4 flex flex-col gap-3 sm:flex-row">
-          {footer.cta.map((item) => (
+          {data.cta.map((item) => (
             <Link key={item.label} href={item.href} className="hover:text-foreground transition-colors">
               {item.label}
             </Link>
@@ -38,8 +38,8 @@ export async function Footer({ footer }: { footer: FooterType }) {
       </section>
 
       <section className="flex flex-wrap items-center gap-2">
-        {footer.contact.map((item, index) => {
-          const isLast = index === footer.contact.length - 1;
+        {data.contact.map((item, index) => {
+          const isLast = index === data.contact.length - 1;
           return (
             <span key={item.label} className="flex gap-2">
               {item.href.startsWith('mailto:') ? (

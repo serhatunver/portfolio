@@ -4,8 +4,9 @@ import { Button } from '@/components/animate-ui/components/buttons/button';
 import { DesktopNav } from '@/components/common/DesktopNav';
 import { MobileNav } from '@/components/common/MobileNav';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { FooterType } from '@/types/content';
 
-export function Header() {
+export function Header({ data }: { data: FooterType }) {
   return (
     <header
       className="
@@ -22,7 +23,7 @@ export function Header() {
           </Link>
         </Button>
         <DesktopNav />
-        <MobileNav />
+        <MobileNav data={data} />
       </div>
     </header>
   );
