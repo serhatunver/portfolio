@@ -8,14 +8,14 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const footer = await getFooter();
+  const footerData = await getFooter();
 
   return (
     <>
-      <Header />
+      <Header data={footerData} />
       <ScrollProgressGlobal className="sticky top-16.75 h-px bg-blue-500 dark:bg-blue-500" />
       <main className="mx-auto w-full max-w-xl px-4">{children}</main>
-      <Footer footer={footer} />
+      <Footer data={footerData} />
     </>
   );
 }
