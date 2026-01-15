@@ -13,7 +13,7 @@ export async function ProjectList({ projects, limit }: ProjectsSectionProps) {
 
   return (
     <Section paddingNone>
-      <div className="flex flex-col gap-3">
+      <div className="mt-2 flex flex-col gap-3">
         {displayed.map((project) => (
           <ProjectCard key={project._id} project={project} />
         ))}
