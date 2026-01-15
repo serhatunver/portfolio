@@ -1,14 +1,14 @@
 import { type SchemaTypeDefinition } from 'sanity';
 
 import { blockContentType } from './blockContentType';
+import { blogPostType } from './blogPostType';
 import { categoryType } from './categoryType';
-import { projectType } from './projectType';
 import { educationType } from './educationType';
 import { experienceType } from './experienceType';
-import { techStackType } from './techStackType';
-import { blogPostType } from './blogPostType';
-import { siteSettingsType } from './siteSettingsType';
 import { iconType } from './iconType';
+import { projectType } from './projectType';
+import { siteSettingsType } from './siteSettingsType';
+import { techStackType } from './techStackType';
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [

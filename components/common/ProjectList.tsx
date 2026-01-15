@@ -1,5 +1,5 @@
-import { Section } from '@/components/layout/Section';
 import { ProjectCard } from '@/components/common/ProjectCard';
+import { Section } from '@/components/layout/Section';
 import type { ProjectType } from '@/types/content';
 
 type ProjectsSectionProps = {
@@ -8,11 +8,7 @@ type ProjectsSectionProps = {
   seeAllLink?: string;
 };
 
-export async function ProjectList({
-  projects,
-  limit,
-  seeAllLink,
-}: ProjectsSectionProps) {
+export async function ProjectList({ projects, limit }: ProjectsSectionProps) {
   const displayed = limit ? projects.slice(0, limit) : projects;
 
   return (

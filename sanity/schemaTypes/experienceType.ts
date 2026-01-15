@@ -1,9 +1,6 @@
+import { orderRankField, orderRankOrdering } from '@sanity/orderable-document-list';
 import { BriefcaseBusiness } from 'lucide-react';
 import { defineArrayMember, defineField, defineType } from 'sanity';
-import {
-  orderRankField,
-  orderRankOrdering,
-} from '@sanity/orderable-document-list';
 
 export const experienceType = defineType({
   name: 'experience',

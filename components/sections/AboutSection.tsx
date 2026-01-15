@@ -1,7 +1,8 @@
-import { getAbout } from '@/lib/cms';
-import { Section } from '@/components/layout/Section';
-import { PortableText } from '@portabletext/react';
 import type { PortableTextComponents } from '@portabletext/react';
+import { PortableText } from '@portabletext/react';
+
+import { Section } from '@/components/layout/Section';
+import { getAbout } from '@/lib/cms';
 
 const components: PortableTextComponents = {
   block: {

@@ -22,10 +22,7 @@ export function formatMonthYear(dateString: string): string {
  * @param endDate - Optional ISO end date string
  * @returns Duration string
  */
-export function formatDuration(
-  startDate: string,
-  endDate?: string | null,
-): string {
+export function formatDuration(startDate: string, endDate?: string | null): string {
   const startText = formatMonthYear(startDate);
   const endText = endDate ? formatMonthYear(endDate) : 'Present';
 

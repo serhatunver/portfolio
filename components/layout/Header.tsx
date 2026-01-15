@@ -1,25 +1,22 @@
 import Link from 'next/link';
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+
 import { Button } from '@/components/animate-ui/components/buttons/button';
 import { DesktopNav } from '@/components/common/DesktopNav';
 import { MobileNav } from '@/components/common/MobileNav';
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 
 export function Header() {
   return (
-    <header className="sticky top-0 flex items-center justify-center w-full h-17 z-20 border-b bg-background/80 backdrop-blur-xl">
-      <div className="flex w-full mx-auto items-center justify-between max-w-xl p-4">
-        <Button
-          asChild
-          size="icon-lg"
-          variant="ghost"
-          className="rounded-full ring-1 ring-ring"
-        >
+    <header
+      className="
+        bg-background/80 sticky top-0 z-20 flex h-17 w-full items-center justify-center border-b backdrop-blur-xl
+      "
+    >
+      <div className="mx-auto flex w-full max-w-xl items-center justify-between p-4">
+        <Button asChild size="icon-lg" variant="ghost" className="ring-ring rounded-full ring-1">
           <Link href="/" className="text-lg font-semibold">
             <Avatar className="size-10">
-              <AvatarImage
-                src="https://avatars.githubusercontent.com/u/96500903"
-                alt="@serhatunver"
-              />
+              <AvatarImage src="https://avatars.githubusercontent.com/u/96500903" alt="@serhatunver" />
               <AvatarFallback>SÜ</AvatarFallback>
             </Avatar>
           </Link>

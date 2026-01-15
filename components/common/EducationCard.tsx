@@ -1,35 +1,21 @@
-import type { EducationType } from '@/types/content';
-import {
-  Card,
-  CardAction,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from '@/components/ui/card';
+import { Calendar, CircleCheckBig, GraduationCap, MapPin } from 'lucide-react';
+
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Badge } from '@/components/ui/badge';
-import { MapPin, Calendar, GraduationCap, CircleCheckBig } from 'lucide-react';
-
-import { formatDuration } from '@/lib/utils/date';
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { urlFor } from '@/lib/cms/image';
+import { formatDuration } from '@/lib/utils/date';
+import type { EducationType } from '@/types/content';
 
 export function EducationCard({ education }: { education: EducationType }) {
   return (
-    <Card className="w-full border-none shadow-none bg-transparent gap-4 py-4">
+    <Card className="w-full gap-4 border-none bg-transparent py-4 shadow-none">
       <CardHeader className="flex items-center gap-4 px-0">
         <Avatar className="size-12 border-2">
           {typeof education.institutionLogo === 'string' ? (
-            <AvatarImage
-              src={education.institutionLogo}
-              alt={education.institution}
-            />
+            <AvatarImage src={education.institutionLogo} alt={education.institution} />
           ) : (
-            <AvatarImage
-              src={urlFor(education.institutionLogo).url()}
-              alt={education.institution}
-            />
+            <AvatarImage src={urlFor(education.institutionLogo).url()} alt={education.institution} />
           )}
           <AvatarFallback>
             {education.institution
@@ -40,8 +26,8 @@ export function EducationCard({ education }: { education: EducationType }) {
           </AvatarFallback>
         </Avatar>
         <CardTitle className="flex flex-col text-base tracking-tight">
-          <span className="text-base hover-slide">{education.institution}</span>
-          <CardDescription className="font-normal hover-slide">
+          <span className="hover-slide text-base">{education.institution}</span>
+          <CardDescription className="hover-slide font-normal">
             {education.degree} &bull; {education.department}
           </CardDescription>
         </CardTitle>
@@ -60,14 +46,11 @@ export function EducationCard({ education }: { education: EducationType }) {
           <span>{education.location}</span>
         </Badge>
       </CardContent>
-      <CardFooter className="text-sm px-0">
+      <CardFooter className="px-0 text-sm">
         <ul className="space-y-1">
           {education.highlights.map((highlight, idx) => (
             <li key={idx} className="hover-slide">
-              <CircleCheckBig
-                className="inline mr-2 mb-1 text-muted-foreground"
-                size={14}
-              />
+              <CircleCheckBig className="text-muted-foreground mr-2 mb-1 inline" size={14} />
               {highlight}
             </li>
           ))}

@@ -1,5 +1,5 @@
-import { Section } from '@/components/layout/Section';
 import { ProjectList } from '@/components/common/ProjectList';
+import { Section } from '@/components/layout/Section';
 import { getProjects } from '@/lib/cms';
 
 type ProjectsSectionProps = {
@@ -7,19 +7,12 @@ type ProjectsSectionProps = {
   seeAllLink?: string;
 };
 
-export async function ProjectsSection({
-  limit,
-  seeAllLink,
-}: ProjectsSectionProps) {
+export async function ProjectsSection({ limit, seeAllLink }: ProjectsSectionProps) {
   const projects = await getProjects();
   if (!projects) return null;
 
   return (
-    <Section
-      title="Projects"
-      description="Here are some of my projects."
-      seeAllLink={seeAllLink}
-    >
+    <Section title="Projects" description="Here are some of my projects." seeAllLink={seeAllLink}>
       <ProjectList projects={projects} limit={limit} />
     </Section>
   );

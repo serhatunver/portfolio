@@ -1,5 +1,5 @@
-import type { SiteSettingsType } from '@/types/content';
 import { convertStringToPortableText } from '@/lib/utils/portableText';
+import type { SiteSettingsType } from '@/types/content';
 
 export const siteSettings: SiteSettingsType = {
   hero: {

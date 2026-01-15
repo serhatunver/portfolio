@@ -32,9 +32,7 @@ export const experience: ExperienceType[] = [
     isCurrent: false,
     endDate: 'Feb 2023',
     location: 'Denizli, Türkiye',
-    highlights: [
-      'Developed user-friendly web interfaces using Vue.js and Nuxt.',
-    ],
+    highlights: ['Developed user-friendly web interfaces using Vue.js and Nuxt.'],
     techStack: [
       {
         slug: 'javascript',

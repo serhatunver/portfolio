@@ -1,6 +1,7 @@
 'use client';
 
-import { motion, useScroll, useSpring, SpringOptions } from 'motion/react';
+import { motion, SpringOptions, useScroll, useSpring } from 'motion/react';
+
 import { cn } from '@/lib/utils';
 
 export type ScrollProgressGlobalProps = {
@@ -14,10 +15,7 @@ const DEFAULT_SPRING_OPTIONS: SpringOptions = {
   restDelta: 0.001,
 };
 
-export function ScrollProgressGlobal({
-  className,
-  springOptions,
-}: ScrollProgressGlobalProps) {
+export function ScrollProgressGlobal({ className, springOptions }: ScrollProgressGlobalProps) {
   const { scrollYProgress } = useScroll();
 
   const scaleX = useSpring(scrollYProgress, {
@@ -25,10 +23,5 @@ export function ScrollProgressGlobal({
     ...(springOptions ?? {}),
   });
 
-  return (
-    <motion.div
-      className={cn('fixed top-0 left-0 h-1 origin-left z-25', className)}
-      style={{ scaleX }}
-    />
-  );
+  return <motion.div className={cn('fixed top-0 left-0 z-25 h-1 origin-left', className)} style={{ scaleX }} />;
 }

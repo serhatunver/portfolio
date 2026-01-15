@@ -2,14 +2,15 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { cn } from '@/lib/utils';
+
 import { Button } from '@/components/animate-ui/components/buttons/button';
 import {
   NavigationMenu,
-  NavigationMenuList,
   NavigationMenuItem,
   NavigationMenuLink,
+  NavigationMenuList,
 } from '@/components/ui/navigation-menu';
+import { cn } from '@/lib/utils';
 
 interface NavItem {
   title: string;
@@ -28,38 +29,19 @@ export type NavMenuProps = {
   onItemClick?: () => void;
 };
 
-export function NavMenu({
-  orientation = 'horizontal',
-  onItemClick,
-}: NavMenuProps) {
+export function NavMenu({ orientation = 'horizontal', onItemClick }: NavMenuProps) {
   const pathname = usePathname();
 
   const isActive = (navItem: NavItem) =>
-    navItem.href === '/'
-      ? pathname === '/'
-      : pathname === navItem.href || pathname.startsWith(`${navItem.href}/`);
+    navItem.href === '/' ? pathname === '/' : pathname === navItem.href || pathname.startsWith(`${navItem.href}/`);
 
   return (
     <NavigationMenu
-      className={cn(
-        'max-w-full',
-        orientation === 'vertical'
-          ? 'flex flex-col items-stretch justify-start'
-          : 'flex',
-      )}
+      className={cn('max-w-full', orientation === 'vertical' ? 'flex flex-col items-stretch justify-start' : 'flex')}
     >
-      <NavigationMenuList
-        className={cn(
-          orientation === 'horizontal'
-            ? 'gap-4 flex-row'
-            : 'flex-col gap-0 w-full',
-        )}
-      >
+      <NavigationMenuList className={cn(orientation === 'horizontal' ? 'flex-row gap-4' : 'w-full flex-col gap-0')}>
         {NAV_ITEMS.map((item) => (
-          <NavigationMenuItem
-            key={item.title}
-            className={cn('w-full', orientation === 'vertical' && 'border-b')}
-          >
+          <NavigationMenuItem key={item.title} className={cn('w-full', orientation === 'vertical' && 'border-b')}>
             <NavigationMenuLink asChild>
               <Button
                 asChild
@@ -67,11 +49,16 @@ export function NavMenu({
                 size="lg"
                 onClick={onItemClick}
                 className={cn(
-                  orientation === 'vertical' ? 'w-full text-left py-8' : '',
-                  'transition-colors text-base font-medium',
+                  orientation === 'vertical' ? 'w-full py-8 text-left' : '',
+                  'text-base font-medium transition-colors',
                   isActive(item)
                     ? 'text-foreground'
-                    : 'text-muted-foreground hover:text-foreground dark:text-muted-foreground dark:hover:text-foreground',
+                    : `
+                      text-muted-foreground
+                      hover:text-foreground
+                      dark:text-muted-foreground
+                      dark:hover:text-foreground
+                    `,
                 )}
               >
                 <Link href={item.href}>{item.title}</Link>

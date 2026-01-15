@@ -1,5 +1,5 @@
-import { Section } from '@/components/layout/Section';
 import { EducationCard } from '@/components/common/EducationCard';
+import { Section } from '@/components/layout/Section';
 import { getEducation } from '@/lib/cms';
 
 export async function EducationSection() {

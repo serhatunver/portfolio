@@ -1,14 +1,15 @@
-import { client } from './client';
 import type {
-  ProjectType,
+  AboutType,
+  BlogPostType,
   EducationType,
   ExperienceType,
-  TechStackType,
-  BlogPostType,
-  HeroType,
-  AboutType,
   FooterType,
+  HeroType,
+  ProjectType,
+  TechStackType,
 } from '@/types/content';
+
+import { client } from './client';
 
 export async function fetchProjectsFromCMS(): Promise<ProjectType[]> {
   return client.fetch(`

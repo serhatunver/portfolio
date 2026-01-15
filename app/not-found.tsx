@@ -1,10 +1,4 @@
-import {
-  Empty,
-  EmptyContent,
-  EmptyDescription,
-  EmptyHeader,
-  EmptyTitle,
-} from '@/components/ui/empty';
+import { Empty, EmptyContent, EmptyDescription, EmptyHeader, EmptyTitle } from '@/components/ui/empty';
 
 export default function NotFound() {
   return (
@@ -12,9 +6,7 @@ export default function NotFound() {
       <EmptyContent>
         <EmptyHeader>
           <EmptyTitle>404 - Page Not Found</EmptyTitle>
-          <EmptyDescription>
-            Oops! The page you are looking for does not exist.
-          </EmptyDescription>
+          <EmptyDescription>Oops! The page you are looking for does not exist.</EmptyDescription>
         </EmptyHeader>
       </EmptyContent>
     </Empty>

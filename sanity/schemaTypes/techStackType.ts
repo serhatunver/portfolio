@@ -1,9 +1,6 @@
+import { orderRankField, orderRankOrdering } from '@sanity/orderable-document-list';
 import { Code } from 'lucide-react';
 import { defineField, defineType } from 'sanity';
-import {
-  orderRankField,
-  orderRankOrdering,
-} from '@sanity/orderable-document-list';
 
 export const techStackType = defineType({
   name: 'techStack',
