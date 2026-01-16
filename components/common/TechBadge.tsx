@@ -13,7 +13,7 @@ export function TechBadge({ size = 'sm', tech }: TechBadgeProps) {
   const icon = getIconBySlug(tech.slug);
 
   const title = tech.title ?? icon.title ?? tech.slug;
-  const hex = icon.hex ?? '000000';
+  const hex = tech.color ?? icon.hex ?? '000000';
   const bgHex = tech.invertColor ? 'var(--background)' : `#${hex}15`;
   const borderColor = tech.invertColor ? 'var(--color-gray-500)' : `#${hex}60`;
 
@@ -32,7 +32,7 @@ export function TechBadge({ size = 'sm', tech }: TechBadgeProps) {
         borderColor: borderColor,
       }}
     >
-      <Icon icon={icon} color={tech.invertColor ? 'var(--foreground)' : null} />
+      <Icon icon={icon} color={tech.invertColor ? 'var(--foreground)' : `#${hex}`} />
       <span>{title}</span>
     </Badge>
   );
