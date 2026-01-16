@@ -4,6 +4,7 @@ import nextTs from 'eslint-config-next/typescript';
 import prettier from 'eslint-config-prettier';
 import eslintPluginBetterTailwindcss from 'eslint-plugin-better-tailwindcss';
 import simpleImportSort from 'eslint-plugin-simple-import-sort';
+import storybook from 'eslint-plugin-storybook';
 import { parser as eslintParserTypeScript } from 'typescript-eslint';
 
 export default defineConfig([
@@ -75,6 +76,18 @@ export default defineConfig([
 
   // Prettier integration
   prettier,
+
+  // Storybook plugin
+  ...storybook.configs['flat/recommended'],
+
+  {
+    files: ['.storybook/**/*.{ts,tsx}'],
+    languageOptions: {
+      parserOptions: {
+        project: ['./.storybook/tsconfig.json'],
+      },
+    },
+  },
 
   // Override default ignores of eslint-config-next
   globalIgnores(['.next/**', 'out/**', 'build/**', 'next-env.d.ts']),
