@@ -10,7 +10,7 @@ import type { ExperienceType } from '@/types/content';
 
 export function ExperienceCard({ experience }: { experience: ExperienceType }) {
   return (
-    <Card className="w-full gap-4 border-none bg-transparent py-4 shadow-none">
+    <Card className="w-full gap-4 border-none py-4">
       <CardHeader className="flex items-center gap-4 px-0">
         <Avatar className="size-12 self-start border-2">
           {typeof experience.companyLogo === 'string' ? (

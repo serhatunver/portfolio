@@ -1,7 +1,6 @@
 'use client';
 
 import { cva, type VariantProps } from 'class-variance-authority';
-import * as React from 'react';
 
 import {
   Button as ButtonPrimitive,
@@ -39,9 +38,10 @@ const buttonVariants = cva(
         outline: `
           bg-background
           hover:bg-accent hover:text-accent-foreground
-          dark:bg-input/30 dark:border-input
+          dark:bg-input/30
           dark:hover:bg-input/50
-          border shadow-xs
+          dark:border-border/60
+          border-border border
         `,
         secondary: `bg-secondary text-secondary-foreground hover:bg-secondary/80 shadow-xs`,
         ghost: `hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50`,
