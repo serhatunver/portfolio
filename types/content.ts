@@ -12,7 +12,7 @@ export type ProjectType = {
   _id: string;
   title: string;
   description?: string;
-  highlights: string[];
+  highlights?: string[];
   techStack: TechType[];
   githubLink?: string;
   demoLink?: string;
@@ -24,12 +24,12 @@ export type EducationType = {
   degree: string;
   department: string;
   institution: string;
-  startDate: string;
+  startDate?: string;
   isCurrent: boolean;
   endDate?: string | null;
-  location: string;
+  location?: string;
   highlights: string[];
-  gpa: string;
+  gpa?: string;
   institutionLogo: SanityImageSource;
 };
 

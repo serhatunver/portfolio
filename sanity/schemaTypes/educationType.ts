@@ -31,7 +31,6 @@ export const educationType = defineType({
       options: {
         dateFormat: 'MMM YYYY',
       },
-      validation: (rule) => rule.required(),
     }),
     defineField({
       name: 'isCurrent',
@@ -50,12 +49,10 @@ export const educationType = defineType({
     defineField({
       name: 'location',
       type: 'string',
-      validation: (rule) => rule.required(),
     }),
     defineField({
       name: 'gpa',
       type: 'string',
-      validation: (rule) => rule.required(),
     }),
     defineField({
       name: 'highlights',

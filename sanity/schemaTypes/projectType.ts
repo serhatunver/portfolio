@@ -28,7 +28,6 @@ export const projectType = defineType({
       name: 'highlights',
       type: 'array',
       of: [defineArrayMember({ type: 'text' })],
-      validation: (rule) => rule.required(),
     }),
     defineField({
       name: 'techStack',
