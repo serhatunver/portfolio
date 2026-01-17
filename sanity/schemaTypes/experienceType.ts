@@ -37,6 +37,7 @@ export const experienceType = defineType({
       name: 'isCurrent',
       title: 'Currently Working Here',
       type: 'boolean',
+      initialValue: false,
     }),
     defineField({
       name: 'endDate',

@@ -9,7 +9,7 @@ import type { EducationType } from '@/types/content';
 
 export function EducationCard({ education }: { education: EducationType }) {
   return (
-    <Card className="w-full gap-4 border-none bg-transparent py-4 shadow-none">
+    <Card className="w-full gap-4 border-none py-4">
       <CardHeader className="flex items-center gap-4 px-0">
         <Avatar className="size-12 border-2">
           {typeof education.institutionLogo === 'string' ? (
@@ -32,20 +32,28 @@ export function EducationCard({ education }: { education: EducationType }) {
           </CardDescription>
         </CardTitle>
       </CardHeader>
-      <CardContent className="flex flex-wrap gap-2 px-0">
-        <Badge variant="outline" className="bg-muted">
-          <GraduationCap />
-          <span>GPA: {education.gpa}</span>
-        </Badge>
-        <Badge variant="outline" className="bg-muted">
-          <Calendar />
-          <span>{formatDuration(education.startDate, education.endDate)}</span>
-        </Badge>
-        <Badge variant="outline" className="bg-muted">
-          <MapPin />
-          <span>{education.location}</span>
-        </Badge>
-      </CardContent>
+      {(education.gpa || education.location || education.startDate) && (
+        <CardContent className="flex flex-wrap gap-2 px-0">
+          {education.gpa && (
+            <Badge variant="outline" className="bg-muted">
+              <GraduationCap />
+              <span>GPA: {education.gpa}</span>
+            </Badge>
+          )}
+          {education.location && (
+            <Badge variant="outline" className="bg-muted">
+              <MapPin />
+              <span>{education.location}</span>
+            </Badge>
+          )}
+          {education.startDate && (
+            <Badge variant="outline" className="bg-muted">
+              <Calendar />
+              <span>{formatDuration(education.startDate, education.endDate)}</span>
+            </Badge>
+          )}
+        </CardContent>
+      )}
       <CardFooter className="px-0 text-sm">
         <ul className="space-y-1">
           {education.highlights.map((highlight, idx) => (
