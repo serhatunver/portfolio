@@ -10,7 +10,7 @@ const badgeVariants = cva(
     aria-invalid:ring-destructive/20
     dark:aria-invalid:ring-destructive/40
     aria-invalid:border-destructive
-    inline-flex w-fit shrink-0 items-center justify-center overflow-hidden rounded-full border text-xs font-medium
+    inline-flex w-fit shrink-0 items-center justify-center overflow-hidden rounded-full text-xs font-medium
     whitespace-nowrap transition-[color,box-shadow]
     focus-visible:ring-[3px]
     [&>svg]:pointer-events-none
@@ -32,8 +32,8 @@ const badgeVariants = cva(
       },
 
       size: {
-        sm: `gap-1 px-2 py-0.5 text-xs [&>svg]:size-3`,
-        md: `gap-1.5 px-3 py-1 text-sm [&>svg]:size-4`,
+        sm: `gap-1 px-2 py-1 text-xs [&>svg]:size-3`,
+        md: `gap-1.5 px-3 py-1.5 text-sm [&>svg]:size-4`,
         lg: `gap-2 px-4 py-2 text-sm [&>svg]:size-5`,
       },
     },

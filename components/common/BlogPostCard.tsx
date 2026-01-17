@@ -16,7 +16,7 @@ import { BlogPostType } from '@/types/content';
 
 export function BlogPostCard({ blogPost }: { blogPost: BlogPostType }) {
   return (
-    <Card className="bg-background/50 backdrop-blur-m mb-6 w-full">
+    <Card className="mb-6 w-full">
       <CardHeader>
         <CardTitle className="text-lg">{blogPost.title}</CardTitle>
         <CardDescription>{blogPost.excerpt}</CardDescription>

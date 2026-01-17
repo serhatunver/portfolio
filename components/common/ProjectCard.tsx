@@ -11,7 +11,7 @@ export function ProjectCard({ project }: { project: ProjectType }) {
   if (!project) return null;
 
   return (
-    <Card className="w-full gap-4 rounded-2xl bg-transparent shadow-none">
+    <Card className="w-full gap-3 rounded-2xl">
       <CardHeader>
         <CardTitle className="hover-slide text-lg">{project.title}</CardTitle>
         <CardDescription>{project.description}</CardDescription>
