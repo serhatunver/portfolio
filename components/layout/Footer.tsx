@@ -18,69 +18,102 @@ export async function Footer({ data }: { data: FooterType }) {
     <Section
       as="footer"
       aria-label="Site footer"
-      className="text-muted-foreground flex max-w-xl flex-col space-y-6 px-4 text-sm"
+      className="
+        text-muted-foreground
+        before:bg-border/64
+        relative mt-8 py-6
+        before:absolute before:inset-x-0 before:top-0 before:h-px
+      "
     >
-      <section>
-        <div className="text-foreground text-lg font-medium">{data.fullName}</div>
-        <div>{data.title}</div>
-      </section>
+      <div
+        aria-hidden="true"
+        className="
+          before:border-border before:bg-popover
+          after:border-border after:bg-background
+          pointer-events-none absolute inset-0 z-50 container
+          before:absolute before:top-[-3.5px] before:-left-[11.5px] before:z-1 before:-ml-1 before:size-2
+          before:rounded-[2px] before:border before:bg-clip-padding before:shadow-xs
+          after:absolute after:top-[-3.5px] after:-right-[11.5px] after:z-1 after:-mr-1 after:size-2 after:rounded-[2px]
+          after:border after:bg-clip-padding after:shadow-xs
+          dark:before:bg-clip-border
+          dark:after:bg-clip-border
+        "
+      />
 
-      <section className="text-base">{data.message}</section>
+      <div className="container flex w-full flex-col gap-3 px-4 sm:px-6">
+        <section>
+          <div className="text-foreground text-lg font-medium">{data.fullName}</div>
+          <div>{data.title}</div>
+        </section>
 
-      <section>
-        <nav className="mb-4 flex flex-col gap-3 sm:flex-row">
-          {data.cta.map((item) => (
-            <Link key={item.label} href={item.href} className="hover:text-foreground transition-colors">
-              {item.label}
-            </Link>
-          ))}
-        </nav>
-      </section>
+        <section className="text-base">{data.message}</section>
 
-      <section className="flex flex-wrap items-center gap-2">
-        {data.contact.map((item, index) => {
-          const isLast = index === data.contact.length - 1;
-          return (
-            <span key={item.label} className="flex gap-2">
-              {item.href.startsWith('mailto:') ? (
-                <MailLink item={item} />
-              ) : (
-                <Link
-                  href={item.href}
+        <section>
+          <nav className="mb-4 flex flex-col gap-3 sm:flex-row">
+            {data.cta.map((item) => (
+              <Link key={item.label} href={item.href} className="hover:text-foreground transition-colors">
+                {item.label}
+              </Link>
+            ))}
+          </nav>
+        </section>
+
+        <section className="flex flex-wrap items-center gap-2">
+          {data.contact.map((item, index) => {
+            const isLast = index === data.contact.length - 1;
+            return (
+              <span key={item.label} className="flex gap-2">
+                {item.href.startsWith('mailto:') ? (
+                  <MailLink item={item} />
+                ) : (
+                  <Link
+                    href={item.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-foreground flex items-center gap-1 transition-colors"
+                  >
+                    {item.icon && (
+                      <Image
+                        src={urlFor(item.icon).url()}
+                        alt=""
+                        width={12}
+                        height={12}
+                        className="size-3 dark:invert"
+                      />
+                    )}
+                    <span>{item.label}</span>
+                  </Link>
+                )}
+                {!isLast && <span>{'/'}</span>}
+              </span>
+            );
+          })}
+        </section>
+
+        <section aria-label="Built with technologies">
+          Built with{' '}
+          {BUILT_WITH_LINKS.map((tech, index) => {
+            const isLast = index === BUILT_WITH_LINKS.length - 1;
+            const isSecondLast = index === BUILT_WITH_LINKS.length - 2;
+
+            return (
+              <span key={tech.label}>
+                <a
+                  href={tech.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:text-foreground flex items-center gap-1 transition-colors"
+                  className="hover:text-foreground underline"
                 >
-                  {item.icon && (
-                    <Image src={urlFor(item.icon).url()} alt="" width={12} height={12} className="size-3 dark:invert" />
-                  )}
-                  <span>{item.label}</span>
-                </Link>
-              )}
-              {!isLast && <span>{'/'}</span>}
-            </span>
-          );
-        })}
-      </section>
+                  {tech.label}
+                </a>
+                {!isLast && <>{isSecondLast ? ' and ' : ', '}</>}
+              </span>
+            );
+          })}
+        </section>
 
-      <section aria-label="Built with technologies">
-        Built with{' '}
-        {BUILT_WITH_LINKS.map((tech, index) => {
-          const isLast = index === BUILT_WITH_LINKS.length - 1;
-          const isSecondLast = index === BUILT_WITH_LINKS.length - 2;
-
-          return (
-            <span key={tech.label}>
-              <a href={tech.href} target="_blank" rel="noopener noreferrer" className="hover:text-foreground underline">
-                {tech.label}
-              </a>
-              {!isLast && <>{isSecondLast ? ' and ' : ', '}</>}
-            </span>
-          );
-        })}
-      </section>
-
-      <section className="text-base">MIT Licensed © {new Date().getFullYear()} Serhat Ünver</section>
+        <section className="text-base">MIT Licensed © {new Date().getFullYear()} Serhat Ünver</section>
+      </div>
     </Section>
   );
 }
