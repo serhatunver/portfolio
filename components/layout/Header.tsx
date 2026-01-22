@@ -10,10 +10,13 @@ export function Header({ data }: { data: FooterType }) {
   return (
     <header
       className="
-        bg-background/80 sticky top-0 z-20 flex h-17 w-full items-center justify-center border-b backdrop-blur-xl
+        bg-background
+        before:bg-border/64
+        sticky top-0 z-40 w-full
+        before:absolute before:inset-x-0 before:bottom-0 before:h-px
       "
     >
-      <div className="mx-auto flex w-full max-w-xl items-center justify-between p-4">
+      <div className="relative container flex h-(--header-height) w-full items-center justify-between gap-2 px-4 sm:px-6">
         <Button asChild size="icon-lg" variant="ghost" className="ring-ring rounded-full ring-1">
           <Link href="/" className="text-lg font-semibold">
             <Avatar className="size-10">
