@@ -13,7 +13,9 @@ export function ProjectCard({ project }: { project: ProjectType }) {
   return (
     <Card className="w-full gap-3 rounded-2xl">
       <CardHeader>
-        <CardTitle className="hover-slide text-lg">{project.title}</CardTitle>
+        <CardTitle className="group/slide text-lg">
+          <div className="hover-slide">{project.title}</div>
+        </CardTitle>
         <CardDescription>{project.description}</CardDescription>
       </CardHeader>
       <CardContent className="space-y-4 text-sm">

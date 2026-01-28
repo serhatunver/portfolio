@@ -134,9 +134,9 @@
 }
 
 .hover-slide {
-  @apply transition-all duration-200 hover:translate-x-1;
+  @apply transition-transform duration-180 group-hover/slide:translate-x-1;
 }
 
 .hover-lift {
-  @apply transition-all duration-200 ease-out hover:-translate-y-1;
+  @apply transition-all duration-180 ease-out group-hover/lift:-translate-y-1;
 }
