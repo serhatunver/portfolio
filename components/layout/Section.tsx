@@ -63,10 +63,12 @@ export function Section<T extends React.ElementType = 'section'>({
             {(title || seeAllLink) && (
               <div className="flex items-center justify-between">
                 {title && (
-                  <h2 className="hover-slide flex w-full items-center text-xl font-medium tracking-tight">
-                    <ChevronsRight size={20} />
-                    <span>{title}</span>
-                  </h2>
+                  <div className="group/slide w-full">
+                    <h2 className="hover-slide flex items-center text-xl font-medium tracking-tight">
+                      <ChevronsRight size={20} />
+                      <span>{title}</span>
+                    </h2>
+                  </div>
                 )}
 
                 {seeAllLink && (

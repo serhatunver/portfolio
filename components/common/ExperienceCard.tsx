@@ -27,8 +27,10 @@ export function ExperienceCard({ experience }: { experience: ExperienceType }) {
           </AvatarFallback>
         </Avatar>
         <div className="flex w-full flex-col justify-between space-y-2">
-          <CardTitle className="hover-slide tracking-tight">
-            {experience.role} @{experience.company}
+          <CardTitle className="group/slide tracking-tight">
+            <div className="hover-slide">
+              {experience.role} @{experience.company}
+            </div>
           </CardTitle>
           <CardDescription className="flex flex-wrap gap-2">
             <Badge variant="outline" className="bg-muted">
@@ -45,9 +47,11 @@ export function ExperienceCard({ experience }: { experience: ExperienceType }) {
       <CardContent className="px-0 text-sm">
         <ul className="space-y-1">
           {experience.highlights.map((highlight, idx) => (
-            <li key={idx} className="hover-slide">
-              <CircleCheckBig className="text-muted-foreground mr-2 mb-1 inline" size={14} />
-              {highlight}
+            <li key={idx} className="group/slide">
+              <div className="hover-slide">
+                <CircleCheckBig className="text-muted-foreground mr-2 mb-1 inline" size={14} />
+                {highlight}
+              </div>
             </li>
           ))}
         </ul>

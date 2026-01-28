@@ -26,9 +26,13 @@ export function EducationCard({ education }: { education: EducationType }) {
           </AvatarFallback>
         </Avatar>
         <CardTitle className="flex flex-col text-base tracking-tight">
-          <span className="hover-slide text-base">{education.institution}</span>
-          <CardDescription className="hover-slide font-normal">
-            {education.degree} &bull; {education.department}
+          <div className="group/slide flex">
+            <div className="hover-slide">{education.institution}</div>
+          </div>
+          <CardDescription className="group/slide font-normal">
+            <div className="hover-slide">
+              {education.degree} &bull; {education.department}
+            </div>
           </CardDescription>
         </CardTitle>
       </CardHeader>
@@ -57,9 +61,11 @@ export function EducationCard({ education }: { education: EducationType }) {
       <CardFooter className="px-0 text-sm">
         <ul className="space-y-1">
           {education.highlights.map((highlight, idx) => (
-            <li key={idx} className="hover-slide">
-              <CircleCheckBig className="text-muted-foreground mr-2 mb-1 inline" size={14} />
-              {highlight}
+            <li key={idx} className="group/slide">
+              <div className="hover-slide">
+                <CircleCheckBig className="text-muted-foreground mr-2 mb-1 inline" size={14} />
+                {highlight}
+              </div>
             </li>
           ))}
         </ul>
