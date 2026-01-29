@@ -2,6 +2,10 @@ import { ProjectList } from '@/components/common/ProjectList';
 import { Section } from '@/components/layout/Section';
 import { getProjects } from '@/lib/cms';
 
+export const metadata = {
+  title: 'Projects',
+};
+
 export default async function Projects() {
   const projects = await getProjects();
 

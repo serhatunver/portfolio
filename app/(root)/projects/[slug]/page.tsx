@@ -1,5 +1,6 @@
 import { SiGithub } from '@icons-pack/react-simple-icons';
 import { ArrowLeft, CircleCheckBig, ExternalLink } from 'lucide-react';
+import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 
@@ -8,13 +9,28 @@ import { TechBadge } from '@/components/common/TechBadge';
 import { Section } from '@/components/layout/Section';
 import { getProjects } from '@/lib/cms';
 
-type ProjectDetailsPageProps = {
+type Props = {
   params: Promise<{
     slug: string;
   }>;
 };
 
-export default async function ProjectDetailsPage({ params }: ProjectDetailsPageProps) {
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const projects = await getProjects();
+  const { slug } = await params;
+  const project = projects.find((p) => p.slug === slug);
+
+  if (!project) {
+    return {};
+  }
+
+  return {
+    title: project.title,
+    description: project.description,
+  };
+}
+
+export default async function ProjectDetailsPage({ params }: Props) {
   const projects = await getProjects();
   const { slug } = await params;
 

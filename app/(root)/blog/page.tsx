@@ -1,6 +1,10 @@
 import { Section } from '@/components/layout/Section';
 import { BlogPostsSection } from '@/components/sections/BlogPostsSection';
 
+export const metadata = {
+  title: 'Blog',
+};
+
 export default function Blog() {
   return (
     <>
