@@ -23,7 +23,7 @@ export async function AboutSection() {
   const about = await getAbout();
 
   return (
-    <Section>
+    <Section ariaLabel="About Section">
       <Section.Content className="space-y-4">
         <h1 className="text-2xl font-bold">{about.title}</h1>
         <PortableText value={about.content} components={components} />
