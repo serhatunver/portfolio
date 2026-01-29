@@ -7,12 +7,12 @@ export const metadata = {
 
 export default function Blog() {
   return (
-    <>
-      <Section ariaLabel="Blog Section">
+    <Section ariaLabel="Blog Section">
+      <div>
         <h1 className="text-2xl font-bold">Blog</h1>
         <p className="text-muted-foreground mt-2">Welcome to my blog! Here are my latest posts.</p>
-      </Section>
+      </div>
       <BlogPostsSection />
-    </>
+    </Section>
   );
 }
